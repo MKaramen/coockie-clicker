@@ -18,7 +18,7 @@
         console.log("First farms");
       } else {
         buyFarms("number", 8);
-        console("Farms give you a cookie");
+        console.log("Farms give you a cookie");
       }
       farmsNumber++;
     }

@@ -18,7 +18,7 @@
         console.log("First grandma");
       } else {
         buyGrandma("number", 1);
-        console("Granny give you a cookie");
+        console.log("Granny give you a cookie");
       }
       grandmaNumber++;
     }
