@@ -37,6 +37,10 @@
   display: flex;
   justify-content: space-around;
 }
+/* Change button img */
+.img_update {
+  width: 25%;
+}
 
 .upgrade_button {
   border: red 3px solid;
@@ -49,15 +53,15 @@
 }
 
 .upgrade_button-cursor {
-  background-image: url('../img/upgrade1.png');
+  background-image: url("../img/upgrade1.png");
 }
 
 .upgrade_button-grandma {
-  background-image: url('../img/upgrade2.png');
+  background-image: url("../img/upgrade2.png");
 }
 
 .upgrade_button-farms {
-  background-image: url('../img/upgrade1.png');
+  background-image: url("../img/upgrade1.png");
 }
 
 /* Store items */
