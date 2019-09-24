@@ -10,9 +10,11 @@
   height: 100vh;
 }
 /* Colum 1 */
+#cookie {
+  padding-top: 100px;
+}
 
 #img_cookie {
-  margin-top: 40px;
   width: 50%;
   cursor: pointer;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
@@ -24,6 +26,14 @@
 }
 #img_cookie:active {
   transform: scale(1.01);
+}
+
+.parSec {
+  margin-top: 40px;
+}
+
+.parSec p {
+  font-size: 2em;
 }
 
 /* Column 2  */
