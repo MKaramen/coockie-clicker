@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>BeCode Clicker</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster|Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="mainContent">
@@ -34,16 +38,28 @@
               src="assets/img/purchase_granny.png"
               alt=""
             />
-            <p>Granny</p>
+            <p>Grannys</p>
             <p id="increase_priceGranny">100</p>
             <p id="count_granny">0</p>
           </div>
           <!-- Farm button -->
           <div id="purchase_farms">
             <img class="img_update" src="assets/img/purchase_farm.png" alt="" />
-            <p>Farm</p>
+            <p>Farms</p>
             <p id="increase_priceFarms">1000</p>
             <p id="count_farms">0</p>
+          </div>
+          <div id="purchase_mines">
+            <img class="img_update" src="assets/img/purchase_farm.png" alt="" />
+            <p>Mines</p>
+            <p id="increase_priceMines">1000</p>
+            <p id="count_Mines">0</p>
+          </div>
+          <div id="purchase_factory">
+            <img class="img_update" src="assets/img/purchase_farm.png" alt="" />
+            <p>Factories</p>
+            <p id="increase_priceFactories">1000</p>
+            <p id="count_Factories">0</p>
           </div>
         </div>
       </div>
@@ -66,7 +82,7 @@
         </div>
 
         <div id="upgrade">
-          <div>
+          <div class="upgrade_wrapper">
             <div
               id="upgradeCursor"
               class="upgrade_button upgrade_button-cursor"
@@ -78,7 +94,7 @@
               level: <span id="cursorUpgradeLevel">0</span>
             </div>
           </div>
-          <div>
+          <div class="upgrade_wrapper">
             <div
               id="upgradeGrandma"
               class="upgrade_button upgrade_button-grandma"
@@ -90,7 +106,7 @@
               level: <span id="grandmaUpgradeLevel">0</span>
             </div>
           </div>
-          <div>
+          <div class="upgrade_wrapper">
             <div id="upgradeFarms" class="upgrade_button upgrade_button-farms">
               farm
             </div>
