@@ -8,7 +8,7 @@
     let priceCursor = parseInt(idCursor.innerHTML);
 
     if (priceCursor > saveObject.compteur) {
-      console.log('pasassezdargent');
+      console.log("T'as pas assez d'argent !");
     } else {
       idCursor.innerHTML = Math.round(parseInt(idCursor.innerHTML) * 1.15);
       countCursor.innerHTML = parseInt(countCursor.innerHTML) + 1;

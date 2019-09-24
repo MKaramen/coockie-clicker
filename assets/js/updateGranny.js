@@ -8,7 +8,7 @@
     let priceGranny = parseInt(idGranny.innerHTML);
 
     if (priceGranny > saveObject.compteur) {
-      console.log('pasassezdargent');
+      console.log("T'as pas assez d'argent !");
     } else {
       idGranny.innerHTML = Math.round(parseInt(idGranny.innerHTML) * 1.15);
       countGranny.innerHTML = parseInt(countGranny.innerHTML) + 1;

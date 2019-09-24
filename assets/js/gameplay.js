@@ -35,6 +35,8 @@ let initObject = {
   }
 };
 
+// * INITIALISE
+
 let saveObject = {};
 if (localStorage.saveObject) {
   saveObject = JSON.parse(localStorage.saveObject);
@@ -42,17 +44,12 @@ if (localStorage.saveObject) {
   saveObject = initObject;
 }
 
-const reset = () => {
-  saveObject = initObject;
-  updateCookie();
-};
-
 // ? Update cookie on the page
 const updateCookie = () => {
   document.getElementById('compteur').innerText = saveObject.compteur;
 };
 
-// ? Update the value of added cookies when click with mouse
+// ? Update the value of click with mouse
 const updateClick = e => {
   saveObject.cursor = saveObject.cursor + e;
   console.log('new cursor is ' + cursor);
@@ -64,14 +61,7 @@ const addCookie = e => {
   updateCookie();
 };
 
-// ? Function add cookies automaticly
-const cursorLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.cursor.loopValue);
-    console.log('im loopin');
-    cursorLoop();
-  }, saveObject.purchase.cursor.loopTime);
-};
+// ? Update and Upgrade
 
 const buyUpdate = (building, arg, value) => {
   if (arg == 'timediv') {
@@ -87,6 +77,15 @@ const buyUpdate = (building, arg, value) => {
       saveObject.purchase[building].loopValue * value;
   }
   updateCookie();
+};
+
+// ? ALL LOOPS
+
+const cursorLoop = () => {
+  setTimeout(() => {
+    addCookie(saveObject.purchase.cursor.loopValue);
+    cursorLoop();
+  }, saveObject.purchase.cursor.loopTime);
 };
 
 const grandmaLoop = () => {
@@ -121,6 +120,12 @@ const save = () => {
   localStorage.setItem('saveObject', JSON.stringify(saveObject));
 };
 
+const reset = () => {
+  saveObject = initObject;
+  updateCookie();
+};
+
+// ? Check cookie per second
 const coockieSeconde = () => {
   let prevCount = saveObject.compteur;
   setTimeout(() => {
@@ -134,6 +139,15 @@ const coockieSeconde = () => {
     coockieSeconde();
   }, 1000);
 };
+
+// ! SAVE EVERY 30 SEC
+const saveAtInterval = () => {
+  setInterval(() => {
+    console.log('saving....');
+    save();
+  }, 30000);
+};
+
 // ? Page Setup
 (() => {
   document.getElementById('cookie').addEventListener('click', () => {
@@ -144,4 +158,5 @@ const coockieSeconde = () => {
   grandmaLoop();
   farmsLoop();
   updateCookie();
+  saveAtInterval();
 })();
