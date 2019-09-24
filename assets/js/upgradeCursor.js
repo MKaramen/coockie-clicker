@@ -26,6 +26,8 @@ let autoClickStore = [
 
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
+    console.log('cursor upgrade clicked');
+
     let upgrade = autoClickStore[autoClickLevel];
     if (compteur > upgrade.cost) {
       compteur = compteur - upgrade.cost;
