@@ -1,103 +1,82 @@
-let compteur = 0;
-let cursor = 1;
-
-let cursorLoopTime = 10000;
-let cursorLoopValue = 0;
-let cursorNumber = 0;
-
-let grandmaLoopTime = 1000;
-let grandmaLoopValue = 0;
-let grandmaNumber = 0;
-
-let farmsLoopTime = 1000;
-let farmsLoopValue = 0;
-let farmsNumber = 0;
-
-let saveObject = localStorage.saveObject || {
-  compteur: compteur,
+let initObject = {
+  compteur: 0,
+  cursor: 1,
   purchase: {
     cursor: {
-      cursorLoopTime: cursorLoopTime,
-      cursorLoopValue: cursorLoopValue,
-      cursorNumber: cursorNumber
+      loopTime: 10000,
+      loopValue: 0,
+      level: 0
     },
     grandma: {
-      grandmaLoopTime: grandmaLoopTime,
-      grandmaLoopValue: grandmaLoopValue,
-      grandmaNumber: grandmaNumber
+      loopTime: 1000,
+      loopValue: 0,
+      level: 0
     },
-
     farms: {
-      farmsLoopTime: farmsLoopTime,
-      farmsLoopValue: farmsLoopValue,
-      farmsNumber: farmsNumber
+      loopTime: 1000,
+      loopValue: 0,
+      level: 0
+    },
+    mines: {
+      loopTime: 1000,
+      loopValue: 0,
+      level: 0
+    },
+    factories: {
+      loopTime: 1000,
+      loopValue: 0,
+      level: 0
     }
   }
 };
 
-const reset = () => {
-  compteur = 0;
-  cursor = 1;
+let saveObject = JSON.parse(localStorage.saveObject) || initObject;
 
-  cursorLoopTime = 10000;
-  cursorLoopValue = 0;
-  cursorNumber = 0;
+const reset = () => {
+  saveObject = initObject;
   updateCookie();
 };
 
 // ? Update cookie on the page
 const updateCookie = () => {
-  document.getElementById('compteur').innerText = compteur;
+  document.getElementById('compteur').innerText = saveObject.compteur;
 };
 
 // ? Update the value of added cookies when click with mouse
 const updateClick = e => {
-  cursor = cursor + e;
+  saveObject.cursor = saveObject.cursor + e;
   console.log('new cursor is ' + cursor);
 };
 
 // ? Function that add a cookie to coompteur
-const addCokie = e => {
-  compteur = compteur + e;
+const addCookie = e => {
+  saveObject.compteur = saveObject.compteur + e;
   updateCookie();
 };
 
 // ? Function add cookies automaticly
 const cursorLoop = () => {
   setTimeout(() => {
-    addCokie(cursorLoopValue);
+    addCookie(saveObject.purchase.cursor.loopValue);
     console.log('im loopin');
     cursorLoop();
-  }, cursorLoopTime);
+  }, saveObject.purchase.cursor.loopTime);
 };
 
-const buyCursor = (arg, value) => {
+const buyUpdate = (building, arg, value) => {
   if (arg == 'timediv') {
-    cursorLoopTime = cursorLoopTime / value;
+    saveObject.purchase[building].loopTime =
+      saveObject.purchase[building].loopTime / value;
     console.log('timediv');
   }
   if (arg == 'number') {
-    cursorLoopValue = cursorLoopValue + value;
+    saveObject.purchase[building].loopValue =
+      saveObject.purchase[building].loopValue + value;
     console.log('number');
   }
   if (arg == 'multiply') {
-    cursorLoopValue = cursorLoopValue * value;
-    console.log('number');
-  }
-  updateCookie();
-};
-
-const buyGrandma = (arg, value) => {
-  if (arg == 'timediv') {
-    grandmaLoopTime = grandmaLoopTime / value;
-    console.log('timediv');
-  }
-  if (arg == 'number') {
-    grandmaLoopValue = grandmaLoopValue + value;
-    console.log('number');
-  }
-  if (arg == 'multiply') {
-    grandmaLoopValue = grandmaLoopValue * value;
+    saveObject.purchase[building].loopValue =
+      saveObject.purchase[building].loopValue * value;
     console.log('number');
   }
   updateCookie();
@@ -105,46 +84,34 @@ const buyGrandma = (arg, value) => {
 
 const grandmaLoop = () => {
   setTimeout(() => {
-    addCokie(grandmaLoopValue);
+    addCookie(saveObject.purchase.grandma.loopValue);
     grandmaLoop();
-  }, grandmaLoopTime);
-};
-
-const buyFarms = (arg, value) => {
-  if (arg == 'timediv') {
-    farmsLoopTime = farmsLoopTime / value;
-    console.log('timediv');
-  }
-  if (arg == 'number') {
-    farmsLoopValue = farmsLoopValue + value;
-    console.log('number');
-  }
-  if (arg == 'multiply') {
-    farmsLoopValue = farmsLoopValue * value;
-    console.log('number');
-  }
-  updateCookie();
+  }, saveObject.purchase.grandma.loopTime);
 };
 
 const farmsLoop = () => {
   setTimeout(() => {
-    addCokie(farmsLoopValue);
+    addCookie(saveObject.purchase.farms.loopValue);
     farmsLoop();
-  }, farmsLoopTime);
+  }, saveObject.purchase.farms.loopTime);
+};
+
+const minesLoop = () => {
+  setTimeout(() => {
+    addCookie(saveObject.purchase.mines.loopValue);
+    minesLoop();
+  }, saveObject.purchase.mines.loopTime);
+};
+
+const factoryLoop = () => {
+  setTimeout(() => {
+    addCookie(saveObject.purchase.factory.loopValue);
+    factoryLoop();
+  }, saveObject.purchase.factory.loopTime);
 };
 
 const save = () => {
-  saveObject = {
-    compteur: compteur,
-    purchase: {
-      cursor: {
-        cursorLoopTime: cursorLoopTime,
-        cursorLoopValue: cursorLoopValue,
-        cursorNumber: cursorNumber
-      }
-    }
-  };
-  localStorage.setItem('saveObject', saveObject);
+  localStorage.setItem('saveObject', JSON.stringify(saveObject));
 };
 
 const coockieSeconde = () => {
@@ -163,11 +130,11 @@ const coockieSeconde = () => {
 // ? Page Setup
 (() => {
   document.getElementById('cookie').addEventListener('click', () => {
-    addCokie(cursor);
-    console.log(compteur);
+    addCookie(saveObject.cursor);
   });
   coockieSeconde();
   cursorLoop();
   grandmaLoop();
   farmsLoop();
+  updateCookie();
 })();

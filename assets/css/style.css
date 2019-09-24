@@ -15,6 +15,8 @@
   margin-top: 40px;
   width: 50%;
   cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
 }
 
 #img_cookie:hover {
@@ -105,6 +107,11 @@
 }
 
 /* Store items */
+#purchase {
+  overflow-y: scroll;
+  position: relative;
+  height: calc(100vh - 6rem);
+}
 
 #purchase div {
   padding: 30px;
