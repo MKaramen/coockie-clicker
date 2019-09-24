@@ -33,6 +33,11 @@
   text-align: center;
 }
 
+#upgrade {
+  display: flex;
+  justify-content: space-around;
+}
+
 .img_upgrade {
   width: 20%;
 }

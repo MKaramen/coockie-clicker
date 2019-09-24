@@ -5,6 +5,14 @@ let cursorLoopTime = 10000;
 let cursorLoopValue = 0;
 let cursorNumber = 0;
 
+let grandmaLoopTime = 1000;
+let grandmaLoopValue = 0;
+let grandmaNumber = 0;
+
+let farmsLoopTime = 1000;
+let farmsLoopValue = 0;
+let farmsNumber = 0;
+
 let saveObject = localStorage.saveObject || {
   compteur: compteur,
   purchase: {
@@ -12,6 +20,17 @@ let saveObject = localStorage.saveObject || {
       cursorLoopTime: cursorLoopTime,
       cursorLoopValue: cursorLoopValue,
       cursorNumber: cursorNumber
+    },
+    grandma: {
+      grandmaLoopTime: grandmaLoopTime,
+      grandmaLoopValue: grandmaLoopValue,
+      grandmaNumber: grandmaNumber
+    },
+
+    farms: {
+      farmsLoopTime: farmsLoopTime,
+      farmsLoopValue: farmsLoopValue,
+      farmsNumber: farmsNumber
     }
   }
 };
@@ -32,7 +51,7 @@ const updateCookie = () => {
 };
 
 // ? Update the value of added cookies when click with mouse
-const updateCursor = e => {
+const updateClick = e => {
   cursor = cursor + e;
   console.log("new cursor is " + cursor);
 };
@@ -57,11 +76,47 @@ const buyCursor = (arg, value) => {
     cursorLoopTime = cursorLoopTime / value;
     console.log("timediv");
   }
-
   if (arg == "number") {
     cursorLoopValue = cursorLoopValue + value;
     console.log("number");
   }
+  if (arg == "multiply") {
+    cursorLoopValue = cursorLoopValue * value;
+    console.log("number");
+  }
+  updateCookie();
+};
+
+const buyGrandma = (arg, value) => {
+  if (arg == "timediv") {
+    grandmaLoopTime = grandmaLoopTime / value;
+    console.log("timediv");
+  }
+  if (arg == "number") {
+    grandmaLoopValue = grandmaLoopValue + value;
+    console.log("number");
+  }
+  if (arg == "multiply") {
+    grandmaLoopValue = grandmaLoopValue * value;
+    console.log("number");
+  }
+  updateCookie();
+};
+
+const buyFarms = (arg, value) => {
+  if (arg == "timediv") {
+    farmsLoopTime = farmsLoopTime / value;
+    console.log("timediv");
+  }
+  if (arg == "number") {
+    farmsLoopValue = farmsLoopValue + value;
+    console.log("number");
+  }
+  if (arg == "multiply") {
+    farmsLoopValue = farmsLoopValue * value;
+    console.log("number");
+  }
+  updateCookie();
 };
 
 const save = () => {
