@@ -1,23 +1,40 @@
 let compteur = 0;
 let cursor = 1;
 
-let cookieLoopTime = 1000;
-let cookieLoopValue = 1;
+let cursorLoopTime = 10000;
+let cursorLoopValue = 0;
+let cursorNumber = 0;
 
-let saveObject = {
+let saveObject = localStorage.saveObject || {
   compteur: compteur,
-  achats: {}
+  purchase: {
+    cursor: {
+      cursorLoopTime: cursorLoopTime,
+      cursorLoopValue: cursorLoopValue,
+      cursorNumber: cursorNumber
+    }
+  }
+};
+
+const reset = () => {
+  compteur = 0;
+  cursor = 1;
+
+  cursorLoopTime = 10000;
+  cursorLoopValue = 0;
+  cursorNumber = 0;
+  updateCookie();
 };
 
 // ? Update cookie on the page
 const updateCookie = () => {
-  document.getElementById('compteur').innerText = compteur;
+  document.getElementById("compteur").innerText = compteur;
 };
 
 // ? Update the value of added cookies when click with mouse
 const updateCursor = e => {
   cursor = cursor + e;
-  console.log('new cursor is ' + cursor);
+  console.log("new cursor is " + cursor);
 };
 
 // ? Function that add a cookie to coompteur
@@ -27,19 +44,45 @@ const addCokie = e => {
 };
 
 // ? Function add cookies automaticly
-const cookieLoop = () => {
+const cursorLoop = () => {
   setTimeout(() => {
-    addCokie(cookieLoopValue);
-    cookieLoop();
-  }, cookieLoopTime);
+    addCokie(cursorLoopValue);
+    console.log("im loopin");
+    cursorLoop();
+  }, cursorLoopTime);
 };
 
+const buyCursor = (arg, value) => {
+  if (arg == "timediv") {
+    cursorLoopTime = cursorLoopTime / value;
+    console.log("timediv");
+  }
+
+  if (arg == "number") {
+    cursorLoopValue = cursorLoopValue + value;
+    console.log("number");
+  }
+};
+
+const save = () => {
+  saveObject = {
+    compteur: compteur,
+    purchase: {
+      cursor: {
+        cursorLoopTime: cursorLoopTime,
+        cursorLoopValue: cursorLoopValue,
+        cursorNumber: cursorNumber
+      }
+    }
+  };
+  localStorage.setItem("saveObject", saveObject);
+};
 // ? Page Setup
 (() => {
-  document.getElementById('cookie').addEventListener('click', () => {
+  document.getElementById("cookie").addEventListener("click", () => {
     addCokie(cursor);
     console.log(compteur);
   });
 
-  cookieLoop();
+  cursorLoop();
 })();
