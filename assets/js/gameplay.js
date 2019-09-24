@@ -103,6 +103,14 @@ const buyGrandma = (arg, value) => {
   updateCookie();
 };
 
+const grandmaLoop = () => {
+  setTimeout(() => {
+    addCokie(grandmaLoopValue);
+    console.log("im grandma");
+    grandmaLoop();
+  }, grandmaLoopTime);
+};
+
 const buyFarms = (arg, value) => {
   if (arg == "timediv") {
     farmsLoopTime = farmsLoopTime / value;
@@ -140,4 +148,5 @@ const save = () => {
   });
 
   cursorLoop();
+  grandmaLoop();
 })();
