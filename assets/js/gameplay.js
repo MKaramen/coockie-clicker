@@ -5,6 +5,10 @@ let cursorLoopTime = 10000;
 let cursorLoopValue = 0;
 let cursorNumber = 0;
 
+let grandmaLoopTime = 1000;
+let grandmaLoopvalue = 0;
+let grandmaNumber = 0;
+
 let saveObject = localStorage.saveObject || {
   compteur: compteur,
   purchase: {
@@ -12,6 +16,11 @@ let saveObject = localStorage.saveObject || {
       cursorLoopTime: cursorLoopTime,
       cursorLoopValue: cursorLoopValue,
       cursorNumber: cursorNumber
+    },
+    grandma: {
+      grandmaLoopTime: grandmaLoopTime,
+      grandmaLoopValue: grandmaLoopValue,
+      grandmaNumber: grandmaNumber
     }
   }
 };
@@ -63,6 +72,22 @@ const buyCursor = (arg, value) => {
   }
   if (arg == 'multiply') {
     cursorLoopValue = cursorLoopValue * value;
+    console.log('number');
+  }
+  updateCookie();
+};
+
+const buyGrandma = (arg, value) => {
+  if (arg == 'timediv') {
+    grandmaLoopTime = grandmaLoopTime / value;
+    console.log('timediv');
+  }
+  if (arg == 'number') {
+    grandmaLoopValue = grandmaLoopValue + value;
+    console.log('number');
+  }
+  if (arg == 'multiply') {
+    grandmaLoopValue = grandmaLoopValue * value;
     console.log('number');
   }
   updateCookie();
