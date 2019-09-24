@@ -36,3 +36,25 @@
 .img_upgrade {
   width: 20%;
 }
+
+/* Store items */
+.purchase_cursor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: pink;
+}
+
+.purchase_granny {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: red;
+}
+
+.purchase_farm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: purple;
+}
