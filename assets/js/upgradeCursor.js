@@ -32,6 +32,9 @@ let autoClickStore = [
       buyCursor(upgrade.type, upgrade.value);
       autoClickLevel++;
       cursor++;
+      document.getElementById('cursorUpgradeCost').innerText =
+        autoClickStore[autoClickLevel].cost;
+      document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
     }
     console.log(cursorLoopValue);
   });
