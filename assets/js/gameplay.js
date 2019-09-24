@@ -5,27 +5,32 @@ let initObject = {
     cursor: {
       loopTime: 10000,
       loopValue: 0,
-      level: 0
+      updateLevel: 0,
+      upgradeLevel: 0
     },
     grandma: {
       loopTime: 1000,
       loopValue: 0,
-      level: 0
+      updateLevel: 0,
+      upgradeLevel: 0
     },
     farms: {
       loopTime: 1000,
       loopValue: 0,
-      level: 0
+      updateLevel: 0,
+      upgradeLevel: 0
     },
     mines: {
       loopTime: 1000,
       loopValue: 0,
-      level: 0
+      updateLevel: 0,
+      upgradeLevel: 0
     },
     factories: {
       loopTime: 1000,
       loopValue: 0,
-      level: 0
+      updateLevel: 0,
+      upgradeLevel: 0
     }
   }
 };
@@ -67,17 +72,14 @@ const buyUpdate = (building, arg, value) => {
   if (arg == 'timediv') {
     saveObject.purchase[building].loopTime =
       saveObject.purchase[building].loopTime / value;
-    console.log('timediv');
   }
   if (arg == 'number') {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue + value;
-    console.log('number');
   }
   if (arg == 'multiply') {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue * value;
-    console.log('number');
   }
   updateCookie();
 };
@@ -115,9 +117,9 @@ const save = () => {
 };
 
 const coockieSeconde = () => {
-  let prevCount = compteur;
+  let prevCount = saveObject.compteur;
   setTimeout(() => {
-    let newCount = compteur;
+    let newCount = saveObject.compteur;
     let diff = newCount - prevCount;
     if (diff < 0) {
       coockieSeconde();

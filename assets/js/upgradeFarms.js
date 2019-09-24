@@ -1,5 +1,3 @@
-let farmsUpgradeLevel = 0;
-
 let farmsUpgradeStore = [
   {
     cost: 11000,
@@ -20,18 +18,19 @@ let farmsUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeFarms').addEventListener('click', () => {
-    console.log('Famrs upgrade clicked');
+    console.log('Farms upgrade clicked');
+    let farmsUpgradeLevel = saveObject.purchase.farms.upgradeLevel;
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
-    if (compteur > upgrade.cost) {
-      compteur = compteur - upgrade.cost;
-      buyFarms('multiply', 2);
+    if (saveObject.compteur > upgrade.cost) {
+      saveObject.compteur = saveObject.compteur - upgrade.cost;
+      buyUpdate('farms', 'multiply', 2);
       farmsUpgradeLevel++;
+      saveObject.purchase.farms.farmsUpgradeLevel++;
       document.getElementById('farmsUpgradeCost').innerText =
         farmsUpgradeStore[farmsUpgradeLevel].cost;
       document.getElementById(
         'farmsUpgradeLevel'
       ).innerText = farmsUpgradeLevel;
     }
-    console.log(farmsLoopValue);
   });
 })();

@@ -1,26 +1,25 @@
 (() => {
   //
-  let idFarms = document.getElementById("increase_priceFarms");
-  let countFarms = document.getElementById("count_farms");
-  let buttonFarms = document.getElementById("purchase_farms");
+  let idFarms = document.getElementById('increase_priceFarms');
+  let countFarms = document.getElementById('count_farms');
+  let buttonFarms = document.getElementById('purchase_farms');
 
-  buttonFarms.addEventListener("click", () => {
+  buttonFarms.addEventListener('click', () => {
     let priceFarms = parseInt(idFarms.innerHTML);
 
-    if (priceFarms > compteur) {
-      console.log("pasassezdargent");
+    if (priceFarms > saveObject.compteur) {
+      console.log("T'as pas assez d'argent !");
     } else {
-      idFarms.innerHTML = Math.floor(parseInt(idFarms.innerHTML) * 1.15);
+      idFarms.innerHTML = Math.round(parseInt(idFarms.innerHTML) * 1.15);
       countFarms.innerHTML = parseInt(countFarms.innerHTML) + 1;
-      compteur = compteur - priceFarms;
-      if (farmsNumber === 0) {
-        buyFarms("number", 8);
-        console.log("First farms");
+      saveObject.compteur = saveObject.compteur - priceFarms;
+      if (saveObject.purchase.farms.updateLevel === 0) {
+        buyUpdate('farms', 'number', 8);
+        console.log('First farms');
       } else {
-        buyFarms("number", 8);
-        console.log("Farms give you a cookie");
+        buyUpdate('farms', 'number', 8);
       }
-      farmsNumber++;
+      saveObject.purchase.farms.updateLevel++;
     }
   });
 })();

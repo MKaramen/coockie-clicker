@@ -1,6 +1,4 @@
-let autoClickLevel = 0;
-
-let autoClickStore = [
+const autoClickStore = [
   {
     type: 'multiply',
     value: 2,
@@ -27,17 +25,18 @@ let autoClickStore = [
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
     console.log('cursor upgrade clicked');
-
+    let autoClickLevel = saveObject.purchase.cursor.upgradeLevel;
     let upgrade = autoClickStore[autoClickLevel];
-    if (compteur > upgrade.cost) {
-      compteur = compteur - upgrade.cost;
-      buyCursor(upgrade.type, upgrade.value);
+    if (saveObject.compteur > upgrade.cost) {
+      saveObject.compteur = saveObject.compteur - upgrade.cost;
+      buyUpdate('cursor', upgrade.type, upgrade.value);
+      saveObject.purchase.cursor.upgradeLevel++;
       autoClickLevel++;
-      cursor++;
+      saveObject.cursor++;
       document.getElementById('cursorUpgradeCost').innerText =
         autoClickStore[autoClickLevel].cost;
       document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
     }
-    console.log(cursorLoopValue);
+    console.log('cursor updated to ', saveObject.cursor);
   });
 })();

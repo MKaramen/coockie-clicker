@@ -1,5 +1,3 @@
-let grandmaUpgradeLevel = 0;
-
 let grandmaUpgradeStore = [
   {
     cost: 1000,
@@ -21,17 +19,18 @@ let grandmaUpgradeStore = [
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
     console.log('grandma upgrade clicked');
+    let grandmaUpgradeLevel = saveObject.purchase.grandma.upgradeLevel;
     let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
-    if (compteur > upgrade.cost) {
-      compteur = compteur - upgrade.cost;
-      buyGrandma('multiply', 2);
+    if (saveObject.compteur > upgrade.cost) {
+      saveObject.compteur = saveObject.compteur - upgrade.cost;
+      buyUpdate('multiply', 2);
       grandmaUpgradeLevel++;
+      saveObject.purchase.grandma.upgradeLevel++;
       document.getElementById('grandmaUpgradeCost').innerText =
         grandmaUpgradeStore[grandmaUpgradeLevel].cost;
       document.getElementById(
         'grandmaUpgradeLevel'
       ).innerText = grandmaUpgradeLevel;
     }
-    console.log(grandmaLoopValue);
   });
 })();
