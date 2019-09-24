@@ -19,12 +19,17 @@ let farmsUpgradeStore = [
 ];
 
 (() => {
-  document.getElementById('upgradeCursor').addEventListener('click', () => {
+  document.getElementById('upgradeFarms').addEventListener('click', () => {
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
     if (compteur > upgrade.cost) {
       compteur = compteur - upgrade.cost;
       buyFarms('multiply', 2);
       farmsUpgradeLevel++;
+      document.getElementById('farmsUpgradeCost').innerText =
+        farmsUpgradeStore[farmsUpgradeLevel].cost;
+      document.getElementById(
+        'farmsUpgradeLevel'
+      ).innerText = farmsUpgradeLevel;
     }
     console.log(farmsLoopValue);
   });
