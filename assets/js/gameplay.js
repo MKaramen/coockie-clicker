@@ -1,6 +1,7 @@
 let initObject = {
   compteur: 0,
   cursor: 1,
+  perSec: 0,
   purchase: {
     cursor: {
       loopTime: 10000,
@@ -117,6 +118,9 @@ const factoryLoop = () => {
 };
 
 const save = () => {
+  let time = new Date();
+  let timestamp = time.getTime();
+  saveObject.saveTime = timestamp;
   localStorage.setItem('saveObject', JSON.stringify(saveObject));
   console.log('saved');
 };
@@ -137,6 +141,7 @@ const coockieSeconde = () => {
       return;
     }
     document.getElementById('compter_sec').innerText = diff;
+    saveObject.perSec = diff;
     coockieSeconde();
   }, 1000);
 };
