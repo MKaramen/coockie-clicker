@@ -118,6 +118,7 @@ const factoryLoop = () => {
 
 const save = () => {
   localStorage.setItem('saveObject', JSON.stringify(saveObject));
+  console.log('saved');
 };
 
 const reset = () => {
@@ -141,7 +142,7 @@ const coockieSeconde = () => {
 };
 
 // ! SAVE EVERY 30 SEC
-const saveAtInterval = () => {
+const autoSave = () => {
   setInterval(() => {
     console.log('saving....');
     save();
@@ -158,5 +159,5 @@ const saveAtInterval = () => {
   grandmaLoop();
   farmsLoop();
   updateCookie();
-  saveAtInterval();
+  autoSave();
 })();

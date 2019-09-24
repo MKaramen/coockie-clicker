@@ -36,7 +36,7 @@ const autoClickStore = [
       document.getElementById('cursorUpgradeCost').innerText =
         autoClickStore[autoClickLevel].cost;
       document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
-      console.log('cursor updated to ', saveObject.cursor);
+      console.log('cursor gives you ', saveObject.cursor, 'cookies');
     }
   });
 })();
