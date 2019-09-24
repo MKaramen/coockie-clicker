@@ -35,9 +35,11 @@ let initObject = {
   }
 };
 
-let saveObject = JSON.parse(localStorage.saveObject);
-if (saveObject == undefined) {
-  console.log('holy guacamole');
+let saveObject = {};
+if (localStorage.saveObject) {
+  saveObject = JSON.parse(localStorage.saveObject);
+} else {
+  saveObject = initObject;
 }
 
 const reset = () => {
