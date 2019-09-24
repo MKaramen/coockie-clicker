@@ -20,6 +20,7 @@ let grandmaUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
+    console.log('grandma upgrade clicked');
     let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
     if (compteur > upgrade.cost) {
       compteur = compteur - upgrade.cost;

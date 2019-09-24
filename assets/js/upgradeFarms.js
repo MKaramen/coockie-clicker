@@ -20,6 +20,7 @@ let farmsUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeFarms').addEventListener('click', () => {
+    console.log('Famrs upgrade clicked');
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
     if (compteur > upgrade.cost) {
       compteur = compteur - upgrade.cost;
