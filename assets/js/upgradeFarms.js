@@ -2,17 +2,17 @@ let farmsUpgradeLevel = 0;
 
 let farmsUpgradeStore = [
   {
-    cost: 1000,
+    cost: 11000,
     condition: null,
     name: "Forwards from farms"
   },
   {
-    cost: 5000,
+    cost: 55000,
     condition: null,
     name: "Steel-plated rolling pins"
   },
   {
-    cost: 50000,
+    cost: 550000,
     condition: null,
     name: "Lubricated dentures	"
   }
