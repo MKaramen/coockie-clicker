@@ -42,6 +42,16 @@
   width: 25%;
 }
 
+.upgrade_button-grandma {
+  background: rgb(61, 104, 153);
+  background-image: url('../img/upgrade1.png');
+}
+
+.upgrade_button-farms {
+  background: rgb(145, 85, 57);
+  background-image: url('../img/upgrade1.png');
+}
+
 .upgrade_button {
   border: red 3px solid;
   width: 50px;
@@ -50,18 +60,6 @@
   padding: 0;
   background-size: 50px 50px;
   cursor: pointer;
-}
-
-.upgrade_button-cursor {
-  background-image: url("../img/upgrade1.png");
-}
-
-.upgrade_button-grandma {
-  background-image: url("../img/upgrade2.png");
-}
-
-.upgrade_button-farms {
-  background-image: url("../img/upgrade1.png");
 }
 
 /* Store items */
