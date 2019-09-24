@@ -2,30 +2,30 @@ let autoClickLevel = 0;
 
 let autoClickStore = [
   {
-    type: 'multiply',
+    type: "multiply",
     value: 2,
     cost: 100,
     condition: null,
-    name: 'Reinforced Index'
+    name: "Reinforced Index"
   },
   {
-    type: 'multiply',
+    type: "multiply",
     value: 2,
     cost: 500,
     condition: null,
-    name: 'Carpal Tunnel'
+    name: "Carpal Tunnel"
   },
   {
-    type: 'multiply',
+    type: "multiply",
     value: 2,
     cost: 10000,
     condition: null,
-    name: 'Ambidextrous'
+    name: "Ambidextrous"
   }
 ];
 
 (() => {
-  document.getElementById('upgradeCursor').addEventListener('click', () => {
+  document.getElementById("upgradeCursor").addEventListener("click", () => {
     let upgrade = autoClickStore[autoClickLevel];
     if (compteur > upgrade.cost) {
       compteur = compteur - upgrade.cost;
