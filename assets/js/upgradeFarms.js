@@ -25,6 +25,11 @@ let farmsUpgradeStore = [
       compteur = compteur - upgrade.cost;
       buyFarms('multiply', 2);
       farmsUpgradeLevel++;
+      document.getElementById('farmsUpgradeCost').innerText =
+        farmsUpgradeStore[farmsUpgradeLevel].cost;
+      document.getElementById(
+        'farmsUpgradeLevel'
+      ).innerText = farmsUpgradeLevel;
     }
     console.log(farmsLoopValue);
   });
