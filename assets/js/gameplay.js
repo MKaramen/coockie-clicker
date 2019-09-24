@@ -28,7 +28,7 @@ const addCokie = e => {
 
 // ? Function add cookies automaticly
 const cookieLoop = () => {
-  setTimeout(function() {
+  setTimeout(() => {
     addCokie(cookieLoopValue);
     cookieLoop();
   }, cookieLoopTime);
