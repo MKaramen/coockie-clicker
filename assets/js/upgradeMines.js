@@ -58,19 +58,6 @@ let minesUpgradeStore = [
 
 (() => {
   document.getElementById('upgrademines').addEventListener('click', () => {
-    // Change image
-    if ((upgradeImage.mines = 0)) {
-      upgradeImage.mines = 1;
-      document
-        .getElementById('mines_img')
-        .setAttribute('src', `assets/img/upgrade_mines1.svg`);
-    }
-    if ((upgradeImage.mines = 1)) {
-      upgradeImage.mines = 0;
-      document
-        .getElementById('mines_img')
-        .setAttribute('src', `assets/img/upgrade_mines2.svg`);
-    }
     //Update les points
     console.log('mines upgrade clicked');
     let minesUpgradeLevel = saveObject.purchase.mines.upgradeLevel;
@@ -84,6 +71,18 @@ let minesUpgradeStore = [
         minesUpgradeStore[minesUpgradeLevel].cost;
       document.getElementById('minesUpgradeLevel').innerText =
         saveObject.purchase.mines.upgradeLevel;
+      // Change image
+      if (upgradeImage.mines == true) {
+        upgradeImage.mines = false;
+        document
+          .getElementById('mines_img')
+          .setAttribute('src', `assets/img/upgrade_mine1.svg`);
+      } else {
+        upgradeImage.mines = true;
+        document
+          .getElementById('mines_img')
+          .setAttribute('src', `assets/img/upgrade_mine2.svg`);
+      }
     } else {
       console.log("T'as pas assez d'argent !");
     }

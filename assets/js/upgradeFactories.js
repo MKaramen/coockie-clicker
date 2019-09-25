@@ -58,32 +58,32 @@ let factoriesUpgradeStore = [
 
 (() => {
   document.getElementById('upgradefactories').addEventListener('click', () => {
-    // Change image
-    if ((upgradeImage.factories = 0)) {
-      upgradeImage.factories = 1;
-      document
-        .getElementById('factories_img')
-        .setAttribute('src', `assets/img/upgrade_factories1.svg`);
-    }
-    if ((upgradeImage.factories = 1)) {
-      upgradeImage.factories = 0;
-      document
-        .getElementById('factories_img')
-        .setAttribute('src', `assets/img/upgrade_factories2.svg`);
-    }
     //Update les points
     let factoriesUpgradeLevel = saveObject.purchase.factories.upgradeLevel;
-    let upgrade = factoriesUpgradeStore[factoriesUpgradeLevel];
+    let upgrade = minesUpgradeStore[factoriesUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
-      buyUpdate('factories', 'multiply', 2);
-      factoriesUpgradeLevel++;
-      saveObject.purchase.factories.factoriesUpgradeLevel++;
-      document.getElementById('factoriesUpgradeCost').innerText =
-        factoriesUpgradeStore[factoriesUpgradeLevel].cost;
-      document.getElementById(
-        'factoriesUpgradeLevel'
-      ).innerText = factoriesUpgradeLevel;
+      buyUpdate('mines', 'multiply', 2);
+      factoriesUpgradeStore++;
+      saveObject.purchase.factories.upgradeLevel++;
+      document.getElementById('minesUpgradeCost').innerText =
+        minesUpgradeStore[factoriesUpgradeLevel].cost;
+      document.getElementById('factoriesUpgradeStore').innerText =
+        saveObject.purchase.factories.upgradeLevel;
+      // Change image
+      if (upgradeImage.factories == true) {
+        upgradeImage.factories = false;
+        document
+          .getElementById('factories_img')
+          .setAttribute('src', `assets/img/upgrade_mine1.svg`);
+      } else {
+        upgradeImage.factories = true;
+        document
+          .getElementById('factories_img')
+          .setAttribute('src', `assets/img/upgrade_mine2.svg`);
+      }
+    } else {
+      console.log("T'as pas assez d'argent !");
     }
   });
 })();

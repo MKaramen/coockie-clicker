@@ -45,19 +45,6 @@ const autoClickStore = [
 
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
-    // Change image
-    if ((upgradeImage.cursor = 0)) {
-      upgradeImage.cursor = 1;
-      document
-        .getElementById('cursor_img')
-        .setAttribute('src', `assets/img/upgrade1.svg`);
-    }
-    if ((upgradeImage.cursor = 1)) {
-      upgradeImage.cursor = 0;
-      document
-        .getElementById('cursor_img')
-        .setAttribute('src', `assets/img/upgrade2.svg`);
-    }
     //Update les points
     let level = saveObject.purchase.cursor.upgradeLevel;
     let upgrade = autoClickStore[level];
@@ -72,6 +59,20 @@ const autoClickStore = [
         autoClickStore[level].cost;
       document.getElementById('cursorUpgradeLevel').innerText = level;
       console.log('cursor gives you ', saveObject.cursor, 'cookies');
+      // Change image
+      if (upgradeImage.cursor == true) {
+        console.log('cursor1');
+        upgradeImage.cursor = false;
+        document
+          .getElementById('cursor_img')
+          .setAttribute('src', `assets/img/upgrade1.svg`);
+      } else {
+        console.log('cursor2');
+        upgradeImage.cursor = true;
+        document
+          .getElementById('cursor_img')
+          .setAttribute('src', `assets/img/upgrade2.svg`);
+      }
     } else {
       console.log("T'as pas assez d'argent !");
     }
