@@ -45,6 +45,20 @@ const autoClickStore = [
 
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
+    // Change image
+    if ((upgradeImage.cursor = 0)) {
+      upgradeImage.cursor = 1;
+      document
+        .getElementById('cursor_image')
+        .setAttribute('src', `assets/img/upgrade1.svg`);
+    }
+    if ((upgradeImage.cursor = 1)) {
+      upgradeImage.cursor = 0;
+      document
+        .getElementById('cursor_image')
+        .setAttribute('src', `assets/img/upgrade2.svg`);
+    }
+    //Update les points
     let level = saveObject.purchase.cursor.upgradeLevel;
     let upgrade = autoClickStore[level];
     if (saveObject.compteur > upgrade.cost) {

@@ -58,6 +58,20 @@ let grandmaUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
+    // Change image
+    if ((upgradeImage.grandma = 0)) {
+      upgradeImage.grandma = 1;
+      document
+        .getElementById('grandma_image')
+        .setAttribute('src', `assets/img/upgrade1.svg`);
+    }
+    if ((upgradeImage.grandma = 1)) {
+      upgradeImage.grandma = 0;
+      document
+        .getElementById('grandma_image')
+        .setAttribute('src', `assets/img/upgrade0.svg`);
+    }
+    //Update les points
     let grandmaUpgradeLevel = saveObject.purchase.grandma.upgradeLevel;
     let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {

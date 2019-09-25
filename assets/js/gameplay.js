@@ -46,6 +46,14 @@ let initObject = {
   }
 };
 
+const upgradeImage = {
+  cursor: 0,
+  grandma: 0,
+  farms: 0,
+  mines: 0,
+  factories: 0
+};
+
 let globalLoopTime = 100;
 let globalLoopValue = 0;
 let timer = null;

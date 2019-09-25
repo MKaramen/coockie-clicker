@@ -58,6 +58,20 @@ let minesUpgradeStore = [
 
 (() => {
   document.getElementById('upgrademines').addEventListener('click', () => {
+    // Change image
+    if ((upgradeImage.mines = 0)) {
+      upgradeImage.mines = 1;
+      document
+        .getElementById('mines_image')
+        .setAttribute('src', `assets/img/upgrade_mines1.svg`);
+    }
+    if ((upgradeImage.mines = 1)) {
+      upgradeImage.mines = 0;
+      document
+        .getElementById('mines_image')
+        .setAttribute('src', `assets/img/upgrade_mines2.svg`);
+    }
+    //Update les points
     console.log('mines upgrade clicked');
     let minesUpgradeLevel = saveObject.purchase.mines.upgradeLevel;
     let upgrade = minesUpgradeStore[minesUpgradeLevel];

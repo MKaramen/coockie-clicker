@@ -58,7 +58,20 @@ let farmsUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeFarms').addEventListener('click', () => {
-    console.log('Farms upgrade clicked');
+    // Change image
+    if ((upgradeImage.farms = 0)) {
+      upgradeImage.farms = 1;
+      document
+        .getElementById('farms_image')
+        .setAttribute('src', `assets/img/upgrade_farms1.svg`);
+    }
+    if ((upgradeImage.farms = 1)) {
+      upgradeImage.farms = 0;
+      document
+        .getElementById('farms_image')
+        .setAttribute('src', `assets/img/upgrade_farms2.svg`);
+    }
+    //Update les points
     let farmsUpgradeLevel = saveObject.purchase.farms.upgradeLevel;
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {
