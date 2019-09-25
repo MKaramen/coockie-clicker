@@ -59,28 +59,31 @@ let factoriesUpgradeStore = [
 (() => {
   document.getElementById('upgradefactories').addEventListener('click', () => {
     //Update les points
+    console.log('factoryuppp');
     let factoriesUpgradeLevel = saveObject.purchase.factories.upgradeLevel;
-    let upgrade = minesUpgradeStore[factoriesUpgradeLevel];
+    let upgrade = factoriesUpgradeStore[factoriesUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('mines', 'multiply', 2);
       factoriesUpgradeStore++;
       saveObject.purchase.factories.upgradeLevel++;
-      document.getElementById('minesUpgradeCost').innerText =
-        minesUpgradeStore[factoriesUpgradeLevel].cost;
-      document.getElementById('factoriesUpgradeStore').innerText =
+      saveObject.purchase.cursor.upgradePrice =
+        factoriesUpgradeStore[level].cost;
+      document.getElementById('factoriesUpgradeCost').innerText =
+        factoriesUpgradeStore[factoriesUpgradeLevel].cost;
+      document.getElementById('factoriesUpgradeLevel').innerText =
         saveObject.purchase.factories.upgradeLevel;
       // Change image
       if (upgradeImage.factories == true) {
         upgradeImage.factories = false;
         document
           .getElementById('factories_img')
-          .setAttribute('src', `assets/img/upgrade_mine1.svg`);
+          .setAttribute('src', `assets/img/upgrade_factories1.png`);
       } else {
         upgradeImage.factories = true;
         document
           .getElementById('factories_img')
-          .setAttribute('src', `assets/img/upgrade_mine2.svg`);
+          .setAttribute('src', `assets/img/upgrade_factories2.png`);
       }
     } else {
       console.log("T'as pas assez d'argent !");

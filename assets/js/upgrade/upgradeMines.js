@@ -67,6 +67,7 @@ let minesUpgradeStore = [
       buyUpdate('mines', 'multiply', 2);
       minesUpgradeLevel++;
       saveObject.purchase.mines.upgradeLevel++;
+      saveObject.purchase.mines.upgradePrice = minesUpgradeStore[level].cost;
       document.getElementById('minesUpgradeCost').innerText =
         minesUpgradeStore[minesUpgradeLevel].cost;
       document.getElementById('minesUpgradeLevel').innerText =

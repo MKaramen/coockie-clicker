@@ -66,6 +66,8 @@ let grandmaUpgradeStore = [
       buyUpdate('multiply', 2);
       grandmaUpgradeLevel++;
       saveObject.purchase.grandma.upgradeLevel++;
+      saveObject.purchase.grandma.upgradePrice =
+        grandmaUpgradeStore[level].cost;
       document.getElementById('grandmaUpgradeCost').innerText =
         grandmaUpgradeStore[grandmaUpgradeLevel].cost;
       document.getElementById('grandmaUpgradeLevel').innerText =

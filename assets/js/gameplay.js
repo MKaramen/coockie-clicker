@@ -140,7 +140,6 @@ const smoother = () => {
   if (time === 0) {
     return;
   }
-  console.log('adding ' + globalLoopValue + ' every ' + globalLoopTime + 'ms');
   globalLoop(globalLoopTime, globalLoopValue);
 };
 
@@ -206,9 +205,18 @@ if (localStorage.saveObject) {
 
 // ? Page Setup
 (() => {
-  document.getElementById('cookie').addEventListener('click', () => {
+  document.getElementById('img_cookie').addEventListener('click', () => {
     addCookie(saveObject.cursor);
   });
+
+  document.getElementById('save').addEventListener('click', () => {
+    save();
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    reset();
+  });
+
   coockieSeconde();
   updateCookie();
   autoSave();
