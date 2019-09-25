@@ -1,6 +1,6 @@
 (() => {
   //
-  let idCursor = document.getElementById("increase_priceCursor");
+  let idCursor = document.getElementById("increase_pricecursor");
   let countCursor = document.getElementById("count_cursor");
   let buttonCursor = document.getElementById("purchase_cursor");
 
