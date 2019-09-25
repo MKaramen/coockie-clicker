@@ -46,15 +46,9 @@ let initObject = {
   }
 };
 
-// * INITIALISE
-
-let saveObject = {};
-if (localStorage.saveObject) {
-  saveObject = JSON.parse(localStorage.saveObject);
-  setSavedValues();
-} else {
-  saveObject = initObject;
-}
+let globalLoopTime = 100;
+let globalLoopValue = 0;
+let timer = null;
 
 // ? Update cookie on the page
 const updateCookie = () => {
@@ -89,43 +83,43 @@ const buyUpdate = (building, arg, value) => {
       saveObject.purchase[building].loopValue * value;
   }
   updateCookie();
+  smoother();
 };
 
-// ? ALL LOOPS
+// ? GLOBAL LOOP
 
-const cursorLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.cursor.loopValue);
-    cursorLoop();
-  }, saveObject.purchase.cursor.loopTime);
+const globalLoop = (time, value) => {
+  timer = setInterval(() => {
+    addCookie(value);
+  }, time);
 };
 
-const grandmaLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.grandma.loopValue);
-    grandmaLoop();
-  }, saveObject.purchase.grandma.loopTime);
-};
+// ? Smoother
 
-const farmsLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.farms.loopValue);
-    farmsLoop();
-  }, saveObject.purchase.farms.loopTime);
-};
-
-const minesLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.mines.loopValue);
-    minesLoop();
-  }, saveObject.purchase.mines.loopTime);
-};
-
-const factoryLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.factory.loopValue);
-    factoryLoop();
-  }, saveObject.purchase.factory.loopTime);
+const smoother = () => {
+  clearInterval(timer);
+  let time = 0,
+    value = 0;
+  Object.keys(saveObject.purchase).forEach(building => {
+    value += saveObject.purchase[building].loopValue;
+    if (saveObject.purchase[building].loopValue !== 0) {
+      time += saveObject.purchase[building].loopTime;
+    }
+  });
+  console.log(time, value);
+  let timePerCookie = +(time / value).toFixed();
+  globalLoopTime = timePerCookie;
+  globalLoopValue = 1;
+  console.log('timepercooker', timePerCookie);
+  if (timePerCookie < 50) {
+    timePerCookie = 50;
+    globalLoopValue = +(value / (globalLoopTime / 20)).toFixed();
+  }
+  if (time === 0) {
+    return;
+  }
+  console.log('adding ' + globalLoopValue + ' every ' + globalLoopTime + 'ms');
+  globalLoop(globalLoopTime, globalLoopValue);
 };
 
 const save = () => {
@@ -165,15 +159,23 @@ const autoSave = () => {
   }, 30000);
 };
 
+// * INITIALISE
+
+let saveObject = {};
+if (localStorage.saveObject) {
+  saveObject = JSON.parse(localStorage.saveObject);
+  setSavedValues();
+  smoother();
+} else {
+  saveObject = initObject;
+}
+
 // ? Page Setup
 (() => {
   document.getElementById('cookie').addEventListener('click', () => {
     addCookie(saveObject.cursor);
   });
   coockieSeconde();
-  cursorLoop();
-  grandmaLoop();
-  farmsLoop();
   updateCookie();
   autoSave();
 })();
