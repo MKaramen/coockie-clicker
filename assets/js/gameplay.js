@@ -8,35 +8,40 @@ let initObject = {
       loopValue: 0,
       updateLevel: 0,
       upgradeLevel: 0,
-      updatePrice: 15
+      updatePrice: 15,
+      upgradePrice: 100
     },
     grandma: {
       loopTime: 1000,
       loopValue: 0,
       updateLevel: 0,
       upgradeLevel: 0,
-      updatePrice: 100
+      updatePrice: 100,
+      upgradePrice: 1000
     },
     farms: {
       loopTime: 1000,
       loopValue: 0,
       updateLevel: 0,
       upgradeLevel: 0,
-      updatePrice: 1100
+      updatePrice: 1100,
+      upgradePrice: 11000
     },
     mines: {
       loopTime: 1000,
       loopValue: 0,
       updateLevel: 0,
       upgradeLevel: 0,
-      updatePrice: 12000
+      updatePrice: 12000,
+      upgradePrice: 120000
     },
     factories: {
       loopTime: 1000,
       loopValue: 0,
       updateLevel: 0,
       upgradeLevel: 0,
-      updatePrice: 130000
+      updatePrice: 130000,
+      upgradePrice: 1300000
     }
   }
 };
@@ -53,13 +58,13 @@ if (localStorage.saveObject) {
 
 // ? Update cookie on the page
 const updateCookie = () => {
-  document.getElementById("compteur").innerText = saveObject.compteur;
+  document.getElementById('compteur').innerText = saveObject.compteur;
 };
 
 // ? Update the value of click with mouse
 const updateClick = e => {
   saveObject.cursor = saveObject.cursor + e;
-  console.log("new cursor is " + cursor);
+  console.log('new cursor is ' + cursor);
 };
 
 // ? Function that add a cookie to coompteur
@@ -71,15 +76,15 @@ const addCookie = e => {
 // ? Update and Upgrade
 
 const buyUpdate = (building, arg, value) => {
-  if (arg == "timediv") {
+  if (arg == 'timediv') {
     saveObject.purchase[building].loopTime =
       saveObject.purchase[building].loopTime / value;
   }
-  if (arg == "number") {
+  if (arg == 'number') {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue + value;
   }
-  if (arg == "multiply") {
+  if (arg == 'multiply') {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue * value;
   }
@@ -127,8 +132,8 @@ const save = () => {
   let time = new Date();
   let timestamp = time.getTime();
   saveObject.saveTime = timestamp;
-  localStorage.setItem("saveObject", JSON.stringify(saveObject));
-  console.log("saved");
+  localStorage.setItem('saveObject', JSON.stringify(saveObject));
+  console.log('saved');
 };
 
 const reset = () => {
@@ -146,7 +151,7 @@ const coockieSeconde = () => {
       coockieSeconde();
       return;
     }
-    document.getElementById("compter_sec").innerText = diff;
+    document.getElementById('compter_sec').innerText = diff;
     saveObject.perSec = diff;
     coockieSeconde();
   }, 1000);
@@ -155,14 +160,14 @@ const coockieSeconde = () => {
 // ! SAVE EVERY 30 SEC
 const autoSave = () => {
   setInterval(() => {
-    console.log("saving....");
+    console.log('saving....');
     save();
   }, 30000);
 };
 
 // ? Page Setup
 (() => {
-  document.getElementById("cookie").addEventListener("click", () => {
+  document.getElementById('cookie').addEventListener('click', () => {
     addCookie(saveObject.cursor);
   });
   coockieSeconde();

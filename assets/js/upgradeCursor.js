@@ -33,6 +33,8 @@ const autoClickStore = [
       saveObject.purchase.cursor.upgradeLevel++;
       autoClickLevel++;
       saveObject.cursor++;
+      saveObject.purchase.cursor.upgradePrice =
+        autoClickStore[autoClickLevel].cost;
       document.getElementById('cursorUpgradeCost').innerText =
         autoClickStore[autoClickLevel].cost;
       document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
