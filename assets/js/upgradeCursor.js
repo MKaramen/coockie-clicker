@@ -61,13 +61,11 @@ const autoClickStore = [
       console.log('cursor gives you ', saveObject.cursor, 'cookies');
       // Change image
       if (upgradeImage.cursor == true) {
-        console.log('cursor1');
         upgradeImage.cursor = false;
         document
           .getElementById('cursor_img')
           .setAttribute('src', `assets/img/upgrade1.svg`);
       } else {
-        console.log('cursor2');
         upgradeImage.cursor = true;
         document
           .getElementById('cursor_img')

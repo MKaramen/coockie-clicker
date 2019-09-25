@@ -140,7 +140,6 @@ const smoother = () => {
   if (time === 0) {
     return;
   }
-  console.log('adding ' + globalLoopValue + ' every ' + globalLoopTime + 'ms');
   globalLoop(globalLoopTime, globalLoopValue);
 };
 

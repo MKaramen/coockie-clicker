@@ -59,15 +59,15 @@ let farmsUpgradeStore = [
 (() => {
   document.getElementById('upgradeFarms').addEventListener('click', () => {
     //Update les points
-    let farmsUpgradeLevel = saveObject.purchase.farms.upgradeLevel;
-    let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
+    let level = saveObject.purchase.farms.upgradeLevel;
+    let upgrade = farmsUpgradeStore[level];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('farms', 'multiply', 2);
-      farmsUpgradeLevel++;
+      level++;
       saveObject.purchase.farms.upgradeLevel++;
       document.getElementById('farmsUpgradeCost').innerText =
-        farmsUpgradeStore[farmsUpgradeLevel].cost;
+        farmsUpgradeStore[level].cost;
       document.getElementById('farmsUpgradeLevel').innerText =
         saveObject.purchase.farms.upgradeLevel;
       // Change image
