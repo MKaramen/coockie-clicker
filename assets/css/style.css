@@ -116,22 +116,28 @@ body {
 }
 
 .upgrade_button-cursor {
-  background: rgb(61, 153, 92);
-  background-image: url("../img/upgrade1.png");
+  background: rgb(145, 85, 57);
+  background-image: url("../img/upgrade1.svg");
 }
 
 .upgrade_button-grandma {
-  background: rgb(61, 104, 153);
-  background-image: url("../img/upgrade1.png");
+  background: rgb(145, 85, 57);
+  background-image: url("../img/upgrade_granny1.svg");
 }
 
 .upgrade_button-farms {
   background: rgb(145, 85, 57);
-  background-image: url("../img/upgrade1.png");
+  background-image: url("../img/upgrade_farm1.png");
+}
+
+.upgrade_button-mines {
+  background: rgb(145, 85, 57);
+  background-image: url("../img/upgrade_mine1.svg");
+  color: white;
 }
 
 .upgrade_button {
-  border: rgb(104, 55, 10) 3px solid;
+  border: rgb(104, 55, 10) 1px solid;
   width: 100px;
   height: 100px;
   display: block;
