@@ -82,10 +82,12 @@
 }
 
 #upgrade {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-content: center;
+  overflow-y: scroll;
+  position: relative;
+  height: calc(100vh - 6rem);
 }
 
 .titre {
