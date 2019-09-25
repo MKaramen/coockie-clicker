@@ -5,7 +5,6 @@ const setSavedValues = () => {
     let setUpgradeLevel = saveObject.purchase[building].upgradeLevel;
     let setUpgradePrice = saveObject.purchase[building].upgradePrice;
     document.getElementById('count_' + building).innerText = setUpdateLevel;
-    console.log(setUpgradePrice);
     document.getElementById(
       'increase_price' + building
     ).innerText = setUpdatePrice;
