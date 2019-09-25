@@ -10,12 +10,14 @@ const setSavedValues = () => {
     document.getElementById(
       "increase_price" + building
     ).innerText = setUpdatePrice;
-    document.getElementById(
-      building + "UpgradeLevel"
-    ).innerText = setUpgradeLevel;
-    document.getElementById(
-      building + "UpgradeCost"
-    ).innerText = setUpgradePrice;
+    if (setUpgradeLevel !== 0) {
+      document.getElementById(
+        building + "UpgradeLevel"
+      ).innerText = setUpgradeLevel;
+      document.getElementById(
+        building + "UpgradeCost"
+      ).innerText = setUpgradePrice;
+    }
   });
 };
 
