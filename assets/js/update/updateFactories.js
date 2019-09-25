@@ -16,10 +16,10 @@
       countFactories.innerHTML = parseInt(countFactories.innerHTML) + 1;
       saveObject.compteur = saveObject.compteur - priceFactories;
       if (saveObject.purchase.factories.updateLevel === 0) {
-        buyUpdate('factories', 'number', 47);
+        buyUpdate('factories', 'number', 260);
         console.log('First factories');
       } else {
-        buyUpdate('factories', 'number', 47);
+        buyUpdate('factories', 'number', 260);
       }
       saveObject.purchase.factories.updateLevel++;
     }

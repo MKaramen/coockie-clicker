@@ -60,16 +60,16 @@ let minesUpgradeStore = [
   document.getElementById('upgrademines').addEventListener('click', () => {
     //Update les points
     console.log('mines upgrade clicked');
-    let minesUpgradeLevel = saveObject.purchase.mines.upgradeLevel;
-    let upgrade = minesUpgradeStore[minesUpgradeLevel];
+    let level = saveObject.purchase.mines.upgradeLevel;
+    let upgrade = minesUpgradeStore[level];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('mines', 'multiply', 2);
-      minesUpgradeLevel++;
+      level++;
       saveObject.purchase.mines.upgradeLevel++;
       saveObject.purchase.mines.upgradePrice = minesUpgradeStore[level].cost;
       document.getElementById('minesUpgradeCost').innerText =
-        minesUpgradeStore[minesUpgradeLevel].cost;
+        minesUpgradeStore[level].cost;
       document.getElementById('minesUpgradeLevel').innerText =
         saveObject.purchase.mines.upgradeLevel;
       // Change image

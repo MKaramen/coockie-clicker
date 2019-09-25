@@ -59,17 +59,17 @@ let grandmaUpgradeStore = [
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
     //Update les points
-    let grandmaUpgradeLevel = saveObject.purchase.grandma.upgradeLevel;
-    let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
+    let level = saveObject.purchase.grandma.upgradeLevel;
+    let upgrade = grandmaUpgradeStore[level];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('multiply', 2);
-      grandmaUpgradeLevel++;
+      level++;
       saveObject.purchase.grandma.upgradeLevel++;
       saveObject.purchase.grandma.upgradePrice =
         grandmaUpgradeStore[level].cost;
       document.getElementById('grandmaUpgradeCost').innerText =
-        grandmaUpgradeStore[grandmaUpgradeLevel].cost;
+        grandmaUpgradeStore[level].cost;
       document.getElementById('grandmaUpgradeLevel').innerText =
         saveObject.purchase.grandma.upgradeLevel;
       // Change image
