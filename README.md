@@ -28,6 +28,8 @@ You will find [here](https://github.com/becodeorg/BXL-Johnson-4.14/tree/master/0
 - Counter
 - Offline counter
 - Desactivate buttons
+- Auto save
+- Reset
 
 ### Others
 - Creation of flat designs with Adobe Illustrator
