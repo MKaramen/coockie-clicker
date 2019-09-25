@@ -66,6 +66,7 @@ let farmsUpgradeStore = [
       buyUpdate('farms', 'multiply', 2);
       level++;
       saveObject.purchase.farms.upgradeLevel++;
+      saveObject.purchase.farms.upgradePrice = farmsUpgradeStore[level].cost;
       document.getElementById('farmsUpgradeCost').innerText =
         farmsUpgradeStore[level].cost;
       document.getElementById('farmsUpgradeLevel').innerText =
