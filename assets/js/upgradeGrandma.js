@@ -14,6 +14,47 @@ let grandmaUpgradeStore = [
     condition: null,
     name: 'Lubricated dentures	'
   }
+  {
+    cost: 5000000,
+    condition: null,
+    name: 'Pruine juice'
+  },
+  {
+    cost : 5000000000,
+    condition: null,
+    name: 'Double-thick glasses'
+  },
+  {
+    cost : 50000000000,
+    condition: null,
+    name: 'Aging agents'
+  },
+  {
+    cost: 50000000000000,
+    condition: null, 
+    name: 'Xtreme walkers'
+  },
+  {
+    cost: 50000000000000000, 
+    condition: null, 
+    name: 'The Unbriding'
+  },
+  {
+    cost: 50000000000000000000,
+    condition: null,
+    name: 'Reverse dementia'
+  },
+  {
+    cost: 50000000000000000000000,
+    condition : null, 
+    name: 'Timeproof hair dyes'
+  },
+  {
+    cost: 500e+24,
+    condition: null,
+    name: 'Good manners',
+  }
+  
 ];
 
 (() => {
