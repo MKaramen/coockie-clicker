@@ -36,6 +36,10 @@ body {
 
 .parSec {
   margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .parSec p {
@@ -84,6 +88,10 @@ body {
 .img_update {
   width: 15%;
 }
+
+.img_settings {
+  width : 25%;
+} 
 
 #upgrade {
   display: flex;
@@ -147,3 +155,5 @@ body {
 #upgrade > div:nth-child(even) {
   background-color: rgb(252, 238, 227);
 }
+
+.
