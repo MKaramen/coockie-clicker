@@ -88,7 +88,6 @@ body {
 #upgrade {
   display: flex;
   flex-direction: column;
-  align-content: center;
   overflow-y: scroll;
   position: relative;
   height: calc(100vh - 6rem);
@@ -106,48 +105,22 @@ body {
   margin: 16px 16px 16px 0px;
 }
 
-.upgrade_wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.upgrade_wrapper div {
-  display: inline-block;
-}
-
-.upgrade_button-cursor {
-  background: rgb(238, 218, 204);
-}
-
-.upgrade_button-grandma {
-  background: rgb(238, 218, 204);
-  background-image: url("../img/upgrade_granny1.svg");
-}
-
-.upgrade_button-farms {
-  background: rgb(238, 218, 204);
-  background-image: url("../img/upgrade_farm1.png");
-}
-
-.upgrade_button-mines {
-  background: rgb(238, 218, 204);
-  background-image: url("../img/upgrade_mine1.svg");
-  color: white;
-}
-
 .upgrade_button-factories {
   background: rgb(238, 218, 204);
   background-image: url("../img/upgrade_factories1.png");
   color: white;
 }
 
-.upgrade_button {
-  width: 100px;
-  height: 100px;
-  display: block;
-  padding: 0;
-  background-size: 100px 100px;
-  cursor: pointer;
+.upgrades {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(238, 218, 204);
+}
+
+.img_upgrades {
+  width: 80px;
 }
 
 /* Store items */
@@ -160,6 +133,7 @@ body {
 #purchase div {
   padding: 30px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
