@@ -1,8 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lobster', cursive;
-  font-family: 'Patrick Hand', cursive;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: rgb(88, 88, 88);
 }
 .mainContent {
   display: grid;
@@ -39,38 +41,41 @@
 /* Column 2  */
 #row-2 {
   grid-column: 1;
-  background-color: #b48745;
+  background-color: white;
   text-align: center;
 }
 
 #row-1 {
   grid-column: 2;
-  background-color: #f5c99b;
+  background-color: rgb(252, 238, 227);
   text-align: center;
   justify-content: center;
 }
 
 #compteur {
-  border: 2px solid #b48745;
   border-radius: 5px;
-  background: #f5c99b;
-  width: 300px;
-  height: 30px;
+  background: rgb(238, 218, 204);
+  text-align: center;
+  width: 250px;
   margin: auto;
+  padding: 4px 8px 4px 8px;
   font-size: 1.5em;
 }
 
 /* Column 3 */
 #row-3 {
   grid-column: 3;
-  background-color: #c3964e;
+  background-color: rgb(252, 238, 227);
   text-align: center;
 }
 
+/* Header  */
 .nav {
-  height: 6rem;
-  background-color: #603313;
+  height: 3rem;
+  padding: 16px 0px 16px 0px;
+  background-color: rgb(252, 238, 227);
 }
+
 /* Change button img */
 .img_update {
   width: 15%;
@@ -79,7 +84,15 @@
 #upgrade {
   margin-top: 40px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.titre {
+  padding-bottom: 8px;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .upgrade_wrapper {
@@ -93,26 +106,26 @@
 
 .upgrade_button-cursor {
   background: rgb(61, 153, 92);
-  background-image: url('../img/upgrade1.png');
+  background-image: url("../img/upgrade1.png");
 }
 
 .upgrade_button-grandma {
   background: rgb(61, 104, 153);
-  background-image: url('../img/upgrade1.png');
+  background-image: url("../img/upgrade1.png");
 }
 
 .upgrade_button-farms {
   background: rgb(145, 85, 57);
-  background-image: url('../img/upgrade1.png');
+  background-image: url("../img/upgrade1.png");
 }
 
 .upgrade_button {
   border: rgb(104, 55, 10) 3px solid;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   display: block;
   padding: 0;
-  background-size: 50px 50px;
+  background-size: 100px 100px;
   cursor: pointer;
 }
 
@@ -132,8 +145,8 @@
 }
 
 #purchase div:nth-child(odd) {
-  background-color: rgba(112, 84, 54, 0.479);
+  background-color: rgb(238, 218, 204);
 }
 #purchase div:nth-child(even) {
-  background-color: #f5ca9b71;
+  background-color: rgb(252, 238, 227);
 }
