@@ -89,16 +89,16 @@ const buyUpdate = (building, arg, value) => {
 const upgradeBuilding = building => {
   console.log(building + ' upgrade clicked');
   let level = saveObject.purchase[building].upgradeLevel;
-  let upgrade = autoClickStore[level];
+  let upgrade = upgrade[buidling][level];
   if (saveObject.compteur > upgrade.cost) {
     saveObject.compteur = saveObject.compteur - upgrade.cost;
     buyUpdate(building, upgrade.type, upgrade.value);
     saveObject.purchase[building].upgradeLevel++;
     level++;
     saveObject.purchase[building].upgradePrice = autoClickStore[level].cost;
-    document.getElementById('cursorUpgradeCost').innerText =
+    document.getElementById(building + 'UpgradeCost').innerText =
       autoClickStore[level].cost;
-    document.getElementById('cursorUpgradeLevel').innerText = level;
+    document.getElementById(building + 'UpgradeLevel').innerText = level;
   }
 };
 
@@ -157,7 +157,7 @@ const coockieSeconde = () => {
   let prevCount = saveObject.compteur;
   setTimeout(() => {
     let newCount = saveObject.compteur;
-    let diff = (newCount - prevCount) * 2;
+    let diff = newCount - prevCount;
     if (diff < 0) {
       coockieSeconde();
       return;
@@ -165,7 +165,7 @@ const coockieSeconde = () => {
     document.getElementById('compter_sec').innerText = diff;
     saveObject.perSec = diff;
     coockieSeconde();
-  }, 500);
+  }, 1000);
 };
 
 // ! SAVE EVERY 30 SEC
@@ -181,17 +181,17 @@ const autoSave = () => {
 let saveObject = {};
 if (localStorage.saveObject) {
   saveObject = JSON.parse(localStorage.saveObject);
+  setSavedValues();
+  smoother();
   if (saveObject.perSec != 0) {
     let time = new Date().getTime();
     let timeDif = Math.floor((time - saveObject.saveTime) / 1000);
-    let addAwayCookie = timeDif * saveObject.perSec * 0.5;
+    let addAwayCookie = Math.floor(timeDif * saveObject.perSec * 0.5);
     alert(
       `You were ${timeDif} seconds away, you got ${addAwayCookie} cookies !`
     );
     addCookie(addAwayCookie);
   }
-  setSavedValues();
-  smoother();
 } else {
   saveObject = initObject;
 }

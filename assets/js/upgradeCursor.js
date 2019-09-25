@@ -19,12 +19,32 @@ const autoClickStore = [
     cost: 10000,
     condition: null,
     name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e6,
+    condition: null,
+    name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e9,
+    condition: null,
+    name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e12,
+    condition: null,
+    name: 'Ambidextrous'
   }
 ];
 
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
-    console.log('cursor upgrade clicked');
     let level = saveObject.purchase.cursor.upgradeLevel;
     let upgrade = autoClickStore[level];
     if (saveObject.compteur > upgrade.cost) {
@@ -38,6 +58,8 @@ const autoClickStore = [
         autoClickStore[level].cost;
       document.getElementById('cursorUpgradeLevel').innerText = level;
       console.log('cursor gives you ', saveObject.cursor, 'cookies');
+    } else {
+      console.log("T'as pas assez d'argent !");
     }
   });
 })();

@@ -67,9 +67,10 @@ let grandmaUpgradeStore = [
       saveObject.purchase.grandma.upgradeLevel++;
       document.getElementById('grandmaUpgradeCost').innerText =
         grandmaUpgradeStore[grandmaUpgradeLevel].cost;
-      document.getElementById(
-        'grandmaUpgradeLevel'
-      ).innerText = grandmaUpgradeLevel;
+      document.getElementById('grandmaUpgradeLevel').innerText =
+        saveObject.purchase.grandma.upgradeLevel;
+    } else {
+      console.log("T'as pas assez d'argent !");
     }
   });
 })();

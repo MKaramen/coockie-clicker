@@ -65,12 +65,11 @@ let farmsUpgradeStore = [
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('farms', 'multiply', 2);
       farmsUpgradeLevel++;
-      saveObject.purchase.farms.farmsUpgradeLevel++;
+      saveObject.purchase.farms.upgradeLevel++;
       document.getElementById('farmsUpgradeCost').innerText =
         farmsUpgradeStore[farmsUpgradeLevel].cost;
-      document.getElementById(
-        'farmsUpgradeLevel'
-      ).innerText = farmsUpgradeLevel;
+      document.getElementById('farmsUpgradeLevel').innerText =
+        saveObject.purchase.farms.upgradeLevel;
     } else {
       console.log("T'as pas assez d'argent !");
     }
