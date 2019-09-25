@@ -58,19 +58,6 @@ let grandmaUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
-    // Change image
-    if ((upgradeImage.grandma = 0)) {
-      upgradeImage.grandma = 1;
-      document
-        .getElementById('grandma_img')
-        .setAttribute('src', `assets/img/upgrade_granny1.svg`);
-    }
-    if ((upgradeImage.grandma = 1)) {
-      upgradeImage.grandma = 0;
-      document
-        .getElementById('grandma_img')
-        .setAttribute('src', `assets/img/upgrade_granny2.svg`);
-    }
     //Update les points
     let grandmaUpgradeLevel = saveObject.purchase.grandma.upgradeLevel;
     let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
@@ -83,6 +70,18 @@ let grandmaUpgradeStore = [
         grandmaUpgradeStore[grandmaUpgradeLevel].cost;
       document.getElementById('grandmaUpgradeLevel').innerText =
         saveObject.purchase.grandma.upgradeLevel;
+      // Change image
+      if (upgradeImage.grandma == true) {
+        upgradeImage.grandma = false;
+        document
+          .getElementById('grandma_img')
+          .setAttribute('src', `assets/img/upgrade_granny1.svg`);
+      } else {
+        upgradeImage.grandma = true;
+        document
+          .getElementById('grandma_img')
+          .setAttribute('src', `assets/img/upgrade_granny2.svg`);
+      }
     } else {
       console.log("T'as pas assez d'argent !");
     }

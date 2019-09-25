@@ -58,19 +58,6 @@ let farmsUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeFarms').addEventListener('click', () => {
-    // Change image
-    if ((upgradeImage.farms = 0)) {
-      upgradeImage.farms = 1;
-      document
-        .getElementById('farms_img')
-        .setAttribute('src', `assets/img/upgrade_farms1.svg`);
-    }
-    if ((upgradeImage.farms = 1)) {
-      upgradeImage.farms = 0;
-      document
-        .getElementById('farms_img')
-        .setAttribute('src', `assets/img/upgrade_farms2.svg`);
-    }
     //Update les points
     let farmsUpgradeLevel = saveObject.purchase.farms.upgradeLevel;
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
@@ -83,6 +70,18 @@ let farmsUpgradeStore = [
         farmsUpgradeStore[farmsUpgradeLevel].cost;
       document.getElementById('farmsUpgradeLevel').innerText =
         saveObject.purchase.farms.upgradeLevel;
+      // Change image
+      if (upgradeImage.farms == true) {
+        upgradeImage.farms = false;
+        document
+          .getElementById('farms_img')
+          .setAttribute('src', `assets/img/upgrade_farm1.png`);
+      } else {
+        upgradeImage.farms = true;
+        document
+          .getElementById('farms_img')
+          .setAttribute('src', `assets/img/upgrade_farm2.png`);
+      }
     } else {
       console.log("T'as pas assez d'argent !");
     }

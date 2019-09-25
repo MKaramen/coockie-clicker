@@ -47,11 +47,11 @@ let initObject = {
 };
 
 const upgradeImage = {
-  cursor: 0,
-  grandma: 0,
-  farms: 0,
-  mines: 0,
-  factories: 0
+  cursor: false,
+  grandma: false,
+  farms: false,
+  mines: false,
+  factories: false
 };
 
 let globalLoopTime = 100;
