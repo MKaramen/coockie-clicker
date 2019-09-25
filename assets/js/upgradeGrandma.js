@@ -58,7 +58,6 @@ let grandmaUpgradeStore = [
 
 (() => {
   document.getElementById('upgradeGrandma').addEventListener('click', () => {
-    console.log('grandma upgrade clicked');
     let grandmaUpgradeLevel = saveObject.purchase.grandma.upgradeLevel;
     let upgrade = grandmaUpgradeStore[grandmaUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {

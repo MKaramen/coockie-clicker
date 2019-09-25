@@ -25,19 +25,18 @@ const autoClickStore = [
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
     console.log('cursor upgrade clicked');
-    let autoClickLevel = saveObject.purchase.cursor.upgradeLevel;
-    let upgrade = autoClickStore[autoClickLevel];
+    let level = saveObject.purchase.cursor.upgradeLevel;
+    let upgrade = autoClickStore[level];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('cursor', upgrade.type, upgrade.value);
       saveObject.purchase.cursor.upgradeLevel++;
-      autoClickLevel++;
+      level++;
       saveObject.cursor++;
-      saveObject.purchase.cursor.upgradePrice =
-        autoClickStore[autoClickLevel].cost;
+      saveObject.purchase.cursor.upgradePrice = autoClickStore[level].cost;
       document.getElementById('cursorUpgradeCost').innerText =
-        autoClickStore[autoClickLevel].cost;
-      document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
+        autoClickStore[level].cost;
+      document.getElementById('cursorUpgradeLevel').innerText = level;
       console.log('cursor gives you ', saveObject.cursor, 'cookies');
     }
   });

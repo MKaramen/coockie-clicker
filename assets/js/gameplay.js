@@ -86,6 +86,22 @@ const buyUpdate = (building, arg, value) => {
   smoother();
 };
 
+const upgradeBuilding = building => {
+  console.log(building + ' upgrade clicked');
+  let level = saveObject.purchase[building].upgradeLevel;
+  let upgrade = autoClickStore[level];
+  if (saveObject.compteur > upgrade.cost) {
+    saveObject.compteur = saveObject.compteur - upgrade.cost;
+    buyUpdate(building, upgrade.type, upgrade.value);
+    saveObject.purchase[building].upgradeLevel++;
+    level++;
+    saveObject.purchase[building].upgradePrice = autoClickStore[level].cost;
+    document.getElementById('cursorUpgradeCost').innerText =
+      autoClickStore[level].cost;
+    document.getElementById('cursorUpgradeLevel').innerText = level;
+  }
+};
+
 // ? GLOBAL LOOP
 
 const globalLoop = (time, value) => {
@@ -106,11 +122,9 @@ const smoother = () => {
       time += saveObject.purchase[building].loopTime;
     }
   });
-  console.log(value, time);
   let timePerCookie = +(time / value).toFixed();
   globalLoopTime = timePerCookie;
   globalLoopValue = 1;
-  console.log('timepercooker', timePerCookie);
   if (timePerCookie < 50) {
     globalLoopTime = 50;
     globalLoopValue = +((value / time) * 50).toFixed(4);
@@ -168,10 +182,8 @@ let saveObject = {};
 if (localStorage.saveObject) {
   saveObject = JSON.parse(localStorage.saveObject);
   if (saveObject.perSec != 0) {
-    console.log('init');
     let time = new Date().getTime();
     let timeDif = Math.floor((time - saveObject.saveTime) / 1000);
-    console.log(timeDif);
     let addAwayCookie = timeDif * saveObject.perSec * 0.5;
     alert(
       `You were ${timeDif} seconds away, you got ${addAwayCookie} cookies !`

@@ -10,27 +10,27 @@ let farmsUpgradeStore = [
     name: 'Steel-plated rolling pins'
   },
   {
-    cost: 550000,
+    cost: 550e3,
     condition: null,
     name: 'Lubricated dentures	'
   },
   {
-    cost: 55000000,
+    cost: 550e4,
     condition: null,
     name: 'Genetically-modified cookies'
   },
   {
-    cost: 5500000000,
+    cost: 550e6,
     condition: null,
     name: 'Gingerbread scarecrows'
   },
   {
-    cost: 550000000000,
+    cost: 550e9,
     condition: null,
     name: 'Pulsar sprinklers'
   },
   {
-    cost: 550000000000000,
+    cost: 550e12,
     condition: null,
     name: 'Fudge fungus'
   },
@@ -50,7 +50,7 @@ let farmsUpgradeStore = [
     name: 'Barnstars'
   },
   {
-    cost: 5500000000000000000000000,
+    cost: 550e24,
     condition: null,
     name: 'Lindworns'
   }
@@ -71,6 +71,8 @@ let farmsUpgradeStore = [
       document.getElementById(
         'farmsUpgradeLevel'
       ).innerText = farmsUpgradeLevel;
+    } else {
+      console.log("T'as pas assez d'argent !");
     }
   });
 })();
