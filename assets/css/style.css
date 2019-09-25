@@ -6,6 +6,10 @@
   font-size: 20px;
   color: rgb(88, 88, 88);
 }
+
+body {
+  cursor: url("../img/pointer.svg");
+}
 .mainContent {
   display: grid;
   grid-template-columns: 30% auto 30%;
