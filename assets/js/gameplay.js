@@ -60,13 +60,13 @@ let timer = null;
 
 // ? Update cookie on the page
 const updateCookie = () => {
-  document.getElementById('compteur').innerText = saveObject.compteur;
+  document.getElementById("compteur").innerText = saveObject.compteur;
 };
 
 // ? Update the value of click with mouse
 const updateClick = e => {
   saveObject.cursor = saveObject.cursor + Math.round(e);
-  console.log('new cursor is ' + cursor);
+  console.log("new cursor is " + cursor);
 };
 
 // ? Function that add a cookie to coompteur
@@ -78,15 +78,15 @@ const addCookie = e => {
 // ? Update and Upgrade
 
 const buyUpdate = (building, arg, value) => {
-  if (arg == 'timediv') {
+  if (arg == "timediv") {
     saveObject.purchase[building].loopTime =
       saveObject.purchase[building].loopTime / value;
   }
-  if (arg == 'number') {
+  if (arg == "number") {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue + value;
   }
-  if (arg == 'multiply') {
+  if (arg == "multiply") {
     saveObject.purchase[building].loopValue =
       saveObject.purchase[building].loopValue * value;
   }
@@ -95,7 +95,7 @@ const buyUpdate = (building, arg, value) => {
 };
 
 const upgradeBuilding = building => {
-  console.log(building + ' upgrade clicked');
+  console.log(building + " upgrade clicked");
   let level = saveObject.purchase[building].upgradeLevel;
   let upgrade = upgrade[buidling][level];
   if (saveObject.compteur > upgrade.cost) {
@@ -104,9 +104,9 @@ const upgradeBuilding = building => {
     saveObject.purchase[building].upgradeLevel++;
     level++;
     saveObject.purchase[building].upgradePrice = autoClickStore[level].cost;
-    document.getElementById(building + 'UpgradeCost').innerText =
+    document.getElementById(building + "UpgradeCost").innerText =
       autoClickStore[level].cost;
-    document.getElementById(building + 'UpgradeLevel').innerText = level;
+    document.getElementById(building + "UpgradeLevel").innerText = level;
   }
 };
 
@@ -147,8 +147,8 @@ const save = () => {
   let time = new Date();
   let timestamp = time.getTime();
   saveObject.saveTime = timestamp;
-  localStorage.setItem('saveObject', JSON.stringify(saveObject));
-  console.log('saved');
+  localStorage.setItem("saveObject", JSON.stringify(saveObject));
+  console.log("saved");
 };
 
 const reset = () => {
@@ -169,7 +169,7 @@ const coockieSeconde = () => {
       coockieSeconde();
       return;
     }
-    document.getElementById('compter_sec').innerText = diff;
+    document.getElementById("compter_sec").innerText = diff;
     saveObject.perSec = diff;
     coockieSeconde();
   }, 1000);
@@ -178,7 +178,7 @@ const coockieSeconde = () => {
 // ! SAVE EVERY 30 SEC
 const autoSave = () => {
   setInterval(() => {
-    console.log('saving....');
+    console.log("saving....");
     save();
   }, 30000);
 };
@@ -205,15 +205,26 @@ if (localStorage.saveObject) {
 
 // ? Page Setup
 (() => {
-  document.getElementById('img_cookie').addEventListener('click', () => {
+  document.getElementById("img_cookie").addEventListener("click", () => {
     addCookie(saveObject.cursor);
   });
 
-  document.getElementById('save').addEventListener('click', () => {
+  document.getElementById("img_cookie").addEventListener("mousedown", () => {
+    document
+      .getElementById("img_cookie")
+      .setAttribute("src", "assets/img/cookie.svg");
+  });
+  document.getElementById("img_cookie").addEventListener("mouseup", () => {
+    document
+      .getElementById("img_cookie")
+      .setAttribute("src", "assets/img/cookie2.svg");
+  });
+
+  document.getElementById("save").addEventListener("click", () => {
     save();
   });
 
-  document.getElementById('reset').addEventListener('click', () => {
+  document.getElementById("reset").addEventListener("click", () => {
     reset();
   });
 
