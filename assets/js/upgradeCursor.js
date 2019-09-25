@@ -19,26 +19,61 @@ const autoClickStore = [
     cost: 10000,
     condition: null,
     name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e6,
+    condition: null,
+    name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e9,
+    condition: null,
+    name: 'Ambidextrous'
+  },
+  {
+    type: 'multiply',
+    value: 2,
+    cost: 10e12,
+    condition: null,
+    name: 'Ambidextrous'
   }
 ];
 
 (() => {
   document.getElementById('upgradeCursor').addEventListener('click', () => {
-    console.log('cursor upgrade clicked');
-    let autoClickLevel = saveObject.purchase.cursor.upgradeLevel;
-    let upgrade = autoClickStore[autoClickLevel];
+    // Change image
+    if ((upgradeImage.cursor = 0)) {
+      upgradeImage.cursor = 1;
+      document
+        .getElementById('cursor_img')
+        .setAttribute('src', `assets/img/upgrade1.svg`);
+    }
+    if ((upgradeImage.cursor = 1)) {
+      upgradeImage.cursor = 0;
+      document
+        .getElementById('cursor_img')
+        .setAttribute('src', `assets/img/upgrade2.svg`);
+    }
+    //Update les points
+    let level = saveObject.purchase.cursor.upgradeLevel;
+    let upgrade = autoClickStore[level];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
       buyUpdate('cursor', upgrade.type, upgrade.value);
       saveObject.purchase.cursor.upgradeLevel++;
-      autoClickLevel++;
+      level++;
       saveObject.cursor++;
-      saveObject.purchase.cursor.upgradePrice =
-        autoClickStore[autoClickLevel].cost;
+      saveObject.purchase.cursor.upgradePrice = autoClickStore[level].cost;
       document.getElementById('cursorUpgradeCost').innerText =
-        autoClickStore[autoClickLevel].cost;
-      document.getElementById('cursorUpgradeLevel').innerText = autoClickLevel;
+        autoClickStore[level].cost;
+      document.getElementById('cursorUpgradeLevel').innerText = level;
       console.log('cursor gives you ', saveObject.cursor, 'cookies');
+    } else {
+      console.log("T'as pas assez d'argent !");
     }
   });
 })();
