@@ -2,74 +2,74 @@ let farmsUpgradeStore = [
   {
     cost: 11000,
     condition: null,
-    name: "Forwards from farms"
+    name: 'Forwards from farms'
   },
   {
     cost: 55000,
     condition: null,
-    name: "Steel-plated rolling pins"
+    name: 'Steel-plated rolling pins'
   },
   {
     cost: 550000,
     condition: null,
-    name: "Lubricated dentures	"
+    name: 'Lubricated dentures	'
   },
   {
     cost: 55000000,
     condition: null,
-    name: "Genetically-modified cookies"
+    name: 'Genetically-modified cookies'
   },
   {
     cost: 5500000000,
     condition: null,
-    name: "Gingerbread scarecrows"
+    name: 'Gingerbread scarecrows'
   },
   {
     cost: 550000000000,
     condition: null,
-    name: "Pulsar sprinklers"
+    name: 'Pulsar sprinklers'
   },
   {
     cost: 550000000000000,
     condition: null,
-    name: "Fudge fungus"
+    name: 'Fudge fungus'
   },
   {
     cost: 550e15,
     condition: null,
-    name: "Wheat triffids"
+    name: 'Wheat triffids'
   },
   {
     cost: 550e18,
     condition: null,
-    name: "Humane pesticides"
+    name: 'Humane pesticides'
   },
   {
     cost: 550e21,
     condition: null,
-    name: "Barnstars"
+    name: 'Barnstars'
   },
   {
     cost: 5500000000000000000000000,
     condition: null,
-    name: "Lindworns"
+    name: 'Lindworns'
   }
 ];
 
 (() => {
-  document.getElementById("upgradeFarms").addEventListener("click", () => {
-    console.log("Farms upgrade clicked");
+  document.getElementById('upgradeFarms').addEventListener('click', () => {
+    console.log('Farms upgrade clicked');
     let farmsUpgradeLevel = saveObject.purchase.farms.upgradeLevel;
     let upgrade = farmsUpgradeStore[farmsUpgradeLevel];
     if (saveObject.compteur > upgrade.cost) {
       saveObject.compteur = saveObject.compteur - upgrade.cost;
-      buyUpdate("farms", "multiply", 2);
+      buyUpdate('farms', 'multiply', 2);
       farmsUpgradeLevel++;
       saveObject.purchase.farms.farmsUpgradeLevel++;
-      document.getElementById("farmsUpgradeCost").innerText =
+      document.getElementById('farmsUpgradeCost').innerText =
         farmsUpgradeStore[farmsUpgradeLevel].cost;
       document.getElementById(
-        "farmsUpgradeLevel"
+        'farmsUpgradeLevel'
       ).innerText = farmsUpgradeLevel;
     }
   });
