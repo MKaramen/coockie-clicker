@@ -14,7 +14,7 @@ This site is an exercise for the Johnson 4.14 promotion of BeCode Brussels.
 It is based on the game [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) created by [Orteil](http://orteil.dashnet.org/).<br/>
 The purpose of the exercise is to apply the learning of Javascript as well as our knowledge of HTML and CSS.<br/>
 You will find [here](https://github.com/becodeorg/BXL-Johnson-4.14/tree/master/05-Javascript/cookie_clicker) the instructions link.<br/>
-[Screenshot of the website](assets/img/becode_clicker.png)
+![Screenshot of the website](assets/img/becode_clicker.png)
 
 ## Tech :
 
