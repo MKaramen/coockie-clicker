@@ -167,12 +167,15 @@ const autoSave = () => {
 let saveObject = {};
 if (localStorage.saveObject) {
   saveObject = JSON.parse(localStorage.saveObject);
-  if (saveObject.perSec !== 0) {
+  if (saveObject.perSec != 0) {
+    console.log('init');
     let time = new Date().getTime();
     let timeDif = Math.floor((time - saveObject.saveTime) / 1000);
     console.log(timeDif);
     let addAwayCookie = timeDif * saveObject.perSec * 0.5;
-    alert('While away, you got ' + addAwayCookie + ' cookies !');
+    alert(
+      `You were ${timeDif} seconds away, you got ${addAwayCookie} cookies !`
+    );
     addCookie(addAwayCookie);
   }
   setSavedValues();

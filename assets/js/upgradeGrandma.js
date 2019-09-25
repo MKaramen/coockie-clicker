@@ -13,30 +13,30 @@ let grandmaUpgradeStore = [
     cost: 50000,
     condition: null,
     name: 'Lubricated dentures	'
-  }
+  },
   {
     cost: 5000000,
     condition: null,
     name: 'Pruine juice'
   },
   {
-    cost : 5000000000,
+    cost: 5000000000,
     condition: null,
     name: 'Double-thick glasses'
   },
   {
-    cost : 50000000000,
+    cost: 50000000000,
     condition: null,
     name: 'Aging agents'
   },
   {
     cost: 50000000000000,
-    condition: null, 
+    condition: null,
     name: 'Xtreme walkers'
   },
   {
-    cost: 50000000000000000, 
-    condition: null, 
+    cost: 50000000000000000,
+    condition: null,
     name: 'The Unbriding'
   },
   {
@@ -46,15 +46,14 @@ let grandmaUpgradeStore = [
   },
   {
     cost: 50000000000000000000000,
-    condition : null, 
+    condition: null,
     name: 'Timeproof hair dyes'
   },
   {
-    cost: 500e+24,
+    cost: 500e24,
     condition: null,
-    name: 'Good manners',
+    name: 'Good manners'
   }
-  
 ];
 
 (() => {
