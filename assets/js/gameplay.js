@@ -57,13 +57,13 @@ const updateCookie = () => {
 
 // ? Update the value of click with mouse
 const updateClick = e => {
-  saveObject.cursor = saveObject.cursor + e;
+  saveObject.cursor = saveObject.cursor + Math.round(e);
   console.log('new cursor is ' + cursor);
 };
 
 // ? Function that add a cookie to coompteur
 const addCookie = e => {
-  saveObject.compteur = saveObject.compteur + e;
+  saveObject.compteur = saveObject.compteur + Math.round(e);
   updateCookie();
 };
 
@@ -106,14 +106,14 @@ const smoother = () => {
       time += saveObject.purchase[building].loopTime;
     }
   });
-  console.log(time, value);
+  console.log(value, time);
   let timePerCookie = +(time / value).toFixed();
   globalLoopTime = timePerCookie;
   globalLoopValue = 1;
   console.log('timepercooker', timePerCookie);
   if (timePerCookie < 50) {
-    timePerCookie = 50;
-    globalLoopValue = +(value / (globalLoopTime / 20)).toFixed();
+    globalLoopTime = 50;
+    globalLoopValue = +((value / time) * 50).toFixed(4);
   }
   if (time === 0) {
     return;
@@ -132,7 +132,10 @@ const save = () => {
 
 const reset = () => {
   saveObject = initObject;
+  clearInterval(timer);
+  save();
   updateCookie();
+  setSavedValues();
 };
 
 // ? Check cookie per second
@@ -140,7 +143,7 @@ const coockieSeconde = () => {
   let prevCount = saveObject.compteur;
   setTimeout(() => {
     let newCount = saveObject.compteur;
-    let diff = newCount - prevCount;
+    let diff = (newCount - prevCount) * 2;
     if (diff < 0) {
       coockieSeconde();
       return;
@@ -148,7 +151,7 @@ const coockieSeconde = () => {
     document.getElementById('compter_sec').innerText = diff;
     saveObject.perSec = diff;
     coockieSeconde();
-  }, 1000);
+  }, 500);
 };
 
 // ! SAVE EVERY 30 SEC
@@ -164,6 +167,14 @@ const autoSave = () => {
 let saveObject = {};
 if (localStorage.saveObject) {
   saveObject = JSON.parse(localStorage.saveObject);
+  if (saveObject.perSec !== 0) {
+    let time = new Date().getTime();
+    let timeDif = Math.floor((time - saveObject.saveTime) / 1000);
+    console.log(timeDif);
+    let addAwayCookie = timeDif * saveObject.perSec * 0.5;
+    alert('While away, you got ' + addAwayCookie + ' cookies !');
+    addCookie(addAwayCookie);
+  }
   setSavedValues();
   smoother();
 } else {
