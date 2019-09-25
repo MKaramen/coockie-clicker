@@ -49,13 +49,13 @@ const autoClickStore = [
     if ((upgradeImage.cursor = 0)) {
       upgradeImage.cursor = 1;
       document
-        .getElementById('cursor_image')
+        .getElementById('cursor_img')
         .setAttribute('src', `assets/img/upgrade1.svg`);
     }
     if ((upgradeImage.cursor = 1)) {
       upgradeImage.cursor = 0;
       document
-        .getElementById('cursor_image')
+        .getElementById('cursor_img')
         .setAttribute('src', `assets/img/upgrade2.svg`);
     }
     //Update les points

@@ -62,13 +62,13 @@ let farmsUpgradeStore = [
     if ((upgradeImage.farms = 0)) {
       upgradeImage.farms = 1;
       document
-        .getElementById('farms_image')
+        .getElementById('farms_img')
         .setAttribute('src', `assets/img/upgrade_farms1.svg`);
     }
     if ((upgradeImage.farms = 1)) {
       upgradeImage.farms = 0;
       document
-        .getElementById('farms_image')
+        .getElementById('farms_img')
         .setAttribute('src', `assets/img/upgrade_farms2.svg`);
     }
     //Update les points

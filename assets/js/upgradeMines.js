@@ -62,13 +62,13 @@ let minesUpgradeStore = [
     if ((upgradeImage.mines = 0)) {
       upgradeImage.mines = 1;
       document
-        .getElementById('mines_image')
+        .getElementById('mines_img')
         .setAttribute('src', `assets/img/upgrade_mines1.svg`);
     }
     if ((upgradeImage.mines = 1)) {
       upgradeImage.mines = 0;
       document
-        .getElementById('mines_image')
+        .getElementById('mines_img')
         .setAttribute('src', `assets/img/upgrade_mines2.svg`);
     }
     //Update les points
