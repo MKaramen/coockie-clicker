@@ -1,5 +1,6 @@
 # cookie-clicker
 Cookie Clicker Game
+[Preview Here](https://philesgilles.github.io/coockie-clicker/)
 
 ## Created by :
 
