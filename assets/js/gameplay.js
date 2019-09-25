@@ -46,15 +46,9 @@ let initObject = {
   }
 };
 
-// * INITIALISE
-
-let saveObject = {};
-if (localStorage.saveObject) {
-  saveObject = JSON.parse(localStorage.saveObject);
-  setSavedValues();
-} else {
-  saveObject = initObject;
-}
+let globalLoopTime = 100;
+let globalLoopValue = 0;
+let timer = null;
 
 // ? Update cookie on the page
 const updateCookie = () => {
@@ -63,13 +57,13 @@ const updateCookie = () => {
 
 // ? Update the value of click with mouse
 const updateClick = e => {
-  saveObject.cursor = saveObject.cursor + e;
+  saveObject.cursor = saveObject.cursor + Math.round(e);
   console.log('new cursor is ' + cursor);
 };
 
 // ? Function that add a cookie to coompteur
 const addCookie = e => {
-  saveObject.compteur = saveObject.compteur + e;
+  saveObject.compteur = saveObject.compteur + Math.round(e);
   updateCookie();
 };
 
@@ -89,43 +83,43 @@ const buyUpdate = (building, arg, value) => {
       saveObject.purchase[building].loopValue * value;
   }
   updateCookie();
+  smoother();
 };
 
-// ? ALL LOOPS
+// ? GLOBAL LOOP
 
-const cursorLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.cursor.loopValue);
-    cursorLoop();
-  }, saveObject.purchase.cursor.loopTime);
+const globalLoop = (time, value) => {
+  timer = setInterval(() => {
+    addCookie(value);
+  }, time);
 };
 
-const grandmaLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.grandma.loopValue);
-    grandmaLoop();
-  }, saveObject.purchase.grandma.loopTime);
-};
+// ? Smoother
 
-const farmsLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.farms.loopValue);
-    farmsLoop();
-  }, saveObject.purchase.farms.loopTime);
-};
-
-const minesLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.mines.loopValue);
-    minesLoop();
-  }, saveObject.purchase.mines.loopTime);
-};
-
-const factoryLoop = () => {
-  setTimeout(() => {
-    addCookie(saveObject.purchase.factory.loopValue);
-    factoryLoop();
-  }, saveObject.purchase.factory.loopTime);
+const smoother = () => {
+  clearInterval(timer);
+  let time = 0,
+    value = 0;
+  Object.keys(saveObject.purchase).forEach(building => {
+    value += saveObject.purchase[building].loopValue;
+    if (saveObject.purchase[building].loopValue !== 0) {
+      time += saveObject.purchase[building].loopTime;
+    }
+  });
+  console.log(value, time);
+  let timePerCookie = +(time / value).toFixed();
+  globalLoopTime = timePerCookie;
+  globalLoopValue = 1;
+  console.log('timepercooker', timePerCookie);
+  if (timePerCookie < 50) {
+    globalLoopTime = 50;
+    globalLoopValue = +((value / time) * 50).toFixed(4);
+  }
+  if (time === 0) {
+    return;
+  }
+  console.log('adding ' + globalLoopValue + ' every ' + globalLoopTime + 'ms');
+  globalLoop(globalLoopTime, globalLoopValue);
 };
 
 const save = () => {
@@ -138,7 +132,10 @@ const save = () => {
 
 const reset = () => {
   saveObject = initObject;
+  clearInterval(timer);
+  save();
   updateCookie();
+  setSavedValues();
 };
 
 // ? Check cookie per second
@@ -146,7 +143,7 @@ const coockieSeconde = () => {
   let prevCount = saveObject.compteur;
   setTimeout(() => {
     let newCount = saveObject.compteur;
-    let diff = newCount - prevCount;
+    let diff = (newCount - prevCount) * 2;
     if (diff < 0) {
       coockieSeconde();
       return;
@@ -154,7 +151,7 @@ const coockieSeconde = () => {
     document.getElementById('compter_sec').innerText = diff;
     saveObject.perSec = diff;
     coockieSeconde();
-  }, 1000);
+  }, 500);
 };
 
 // ! SAVE EVERY 30 SEC
@@ -165,15 +162,31 @@ const autoSave = () => {
   }, 30000);
 };
 
+// * INITIALISE
+
+let saveObject = {};
+if (localStorage.saveObject) {
+  saveObject = JSON.parse(localStorage.saveObject);
+  if (saveObject.perSec !== 0) {
+    let time = new Date().getTime();
+    let timeDif = Math.floor((time - saveObject.saveTime) / 1000);
+    console.log(timeDif);
+    let addAwayCookie = timeDif * saveObject.perSec * 0.5;
+    alert('While away, you got ' + addAwayCookie + ' cookies !');
+    addCookie(addAwayCookie);
+  }
+  setSavedValues();
+  smoother();
+} else {
+  saveObject = initObject;
+}
+
 // ? Page Setup
 (() => {
   document.getElementById('cookie').addEventListener('click', () => {
     addCookie(saveObject.cursor);
   });
   coockieSeconde();
-  cursorLoop();
-  grandmaLoop();
-  farmsLoop();
   updateCookie();
   autoSave();
 })();
