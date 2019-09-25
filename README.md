@@ -1,14 +1,14 @@
 # cookie-clicker
 Coockie Clicker Game
 
-## Site créé par :
+## Created by :
 
 [Philippe GILLES](https://github.com/philesgilles)
 [Matis KARAMENDERES](https://github.com/MKaramen)
 [Pierre KIMBANZI RUGANDA](https://github.com/PierreKimbanziR)
 [Grégoire WASTELAIN](https://github.com/gwastelain)
 
-## A propos :
+## About :
 
 This site is an exercise for the Johnson 4.14 promotion of BeCode Brussels.
 It is based on the game [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/) created by [Orteil](http://orteil.dashnet.org/).
